@@ -1,0 +1,58 @@
+.container{
+    
+    height: 100vh;
+    width: 100vw;
+}
+.upper-container{
+    width: 100vw;
+    height: 60vh;
+    background-image: url("./Images/homeImage.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+}
+
+.link-item{
+    float: right;   
+    margin-right: 20px;
+}
+
+.logo img{
+    height: 200px;
+    width: 300px;
+    margin-bottom: 40px;
+}
+
+.title{
+    margin: 40px;
+    font-weight: bolder;
+}
+
+.bold-text{
+    text-align: center;
+    font-weight: bold;
+}
+
+.normal-text{
+    text-align: center;
+    color:gray;
+}
+
+#why-synargy{
+    display: block;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.icons-grid{
+    display: grid;
+    grid-template-columns: 33% 33% 34%;
+    padding: 15px;
+}
+
+.icon{
+    text-align: center;
+    
+}
+
+
