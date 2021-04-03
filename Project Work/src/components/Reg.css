@@ -1,0 +1,16 @@
+.inline-flex-par {
+  /*this class is for firstname lastname*/
+  display: inline-flex;
+
+  background-color: #fff;
+  border-radius: 50px;
+}
+
+.inline-flex-par1 {
+  display: inline-flex;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
+}
