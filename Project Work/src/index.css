@@ -1,0 +1,359 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.AnsCmt {
+  border: 1px solid blue;
+  border-radius: 20px;
+  margin: 5px;
+  padding: 15px;
+}
+
+.discussAns {
+  display: block;
+  /* border: 1px solid lightblue; */
+  border-radius: 20px;
+  width: 80%;
+  min-height: 30px;
+}
+
+.ProjOutBox {
+  margin: 30px auto;
+
+  /* max-width: 1000px; */
+  overflow: auto;
+  padding: 10px;
+  border: 1px solid #123123;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  border-radius: 50px;
+}
+
+.discussionBox {
+  margin: 30px auto;
+
+  max-width: 1000px;
+  overflow: auto;
+  padding: 30px;
+  padding-right: 0px;
+  border: 1px solid steelblue;
+  border-radius: 10px;
+}
+.AskBox {
+  margin: 0px;
+  max-width: 1000px;
+  overflow: auto;
+}
+.AskQuestion {
+  margin: 30px auto;
+  padding: 30px;
+  overflow: auto;
+  max-width: 1000px;
+}
+.projectbx {
+  /* margin: 30px auto; */
+
+  max-width: 1000px;
+  overflow: auto;
+  /* padding: 30px; */
+  /* border: 1px solid steelblue; */
+  border-radius: 10px;
+}
+.projhd {
+  /**/
+  background-color: aliceblue;
+  font-size: 2rem;
+  padding: 10px;
+  border-radius: 15px;
+}
+.ApplyBtn {
+  /*Apply button in project form in each project*/
+  align-content: flex-end;
+}
+.ProjectDiscrp {
+  /* Project discription */
+  font-size: 1rem;
+}
+.ProjectBox {
+  /* class of project forum each project outer div tag*/
+  margin: 30px auto;
+  border: 1px solid black;
+  border-radius: 20px;
+  max-width: 100%;
+}
+
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  /* border: 1px solid steelblue; */
+  /* background-color: #fff; */
+  padding: 30px;
+  /* border-radius: 50px; */
+  /* border-radius: 50px 0px 0px 50px; */
+}
+
+.question-container{
+  display: grid;
+  grid-template-columns: 84% auto;
+  border: 2px solid red;
+}
+.containerbg {
+  /*this class is for back ground image*/
+  /* position: relative; */
+
+  /* max-width: 2000px; */
+  width: 100%;
+  height: 100vh;
+  margin: 30px auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: auto;
+  /* min-height: 900px; */
+  border: 1px solid rgb(82, 92, 100);
+
+  background-color: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+
+  /* opacity: 90%; */
+  padding: 30px;
+  /* border-radius: 50px; */
+  /* border-radius: 10px 100px 10px 10px; */
+}
+.profilepic {
+  margin-top: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.AddAProject {
+  /*in Project forum add project for profs */
+  margin: 30px;
+  padding: 10px;
+  align-content: space-between;
+}
+.AddProjTitle {
+  /*in Project forum add project for profs  Title "Add New Project"*/
+  background-color: antiquewhite;
+  font-size: 1rem;
+}
+.syn {
+  /*this class is for out logo image*/
+  position: relative;
+
+  /* max-width: 500px; */
+  /* max-height: 500px; */
+  /* min-height: 500px; */
+
+  margin: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* background-color:white; */
+  overflow: auto;
+  /* border-radius: 0px 50px 50px 0px; */
+
+  /* border: 1px solid steelblue; */
+  /* opacity: 10%; */
+  padding: 30px;
+}
+.imglogo {
+  position: relative;
+
+  margin: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  overflow: auto;
+  opacity: 0;
+  padding: 50px;
+}
+
+.perent {
+  justify-content: center;
+
+  max-width: 1000px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px solid steelblue;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 50px;
+}
+
+.even123 {
+  /*this class is for linkedin github logo in login page */
+  display: flex;
+  justify-content: space-between;
+}
+.inline-flex-proj {
+  display: inline-flex;
+}
+
+.Discuss-prof {
+  font-size: medium;
+}
+.Discuss-oth {
+  margin-left: 10px;
+  font-size: smaller;
+}
+.inline-flex-parent {
+  /*this class is for login/create acc white box in back ground image*/
+  display: inline-flex;
+  /* justify-content: center; */
+  /* margin-top: 5%; */
+  margin: auto;
+
+  /* margin-left: 30%; */
+  border: 1px solid steelblue;
+  background-color: #fff;
+  /* border-radius: 50px; */
+}
+
+.textcls {
+  text-align: center;
+  font-family: Gabria hallelujah;
+  white-space: wrap;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+.btn-ot {
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: medium;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: solid;
+}
+
+.task {
+  background: #f4f4f4;
+  background: burlywood;
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.task.reminder {
+  border-left: 5px solid green;
+  border-right: 5px solid green;
+  border-radius: 20px;
+}
+
+.task h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.discussion-box{
+
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-template-columns: 100%;
+}
+
+.add-form {
+  margin-bottom: 40px;
+}
+
+.form-control {
+  margin: 20px auto;
+}
+.text-box {
+  border-radius: 10px;
+  text-align: center;
+}
+.form-control label {
+  display: block;
+}
+
+.form-control input {
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.form-control-check {
+  display: flex;
+  align-items: left;
+  justify-content: space-between;
+}
+
+.form-control-check label {
+  flex: 1;
+}
+
+.form-control-check input {
+  flex: 2;
+  height: 20px;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.inline-flex-par {
+  display: inline-flex;
+
+  background-color: #fff;
+  border-radius: 50px;
+}
+
+.inline-flex-par1 {
+  display: inline-flex;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
+}

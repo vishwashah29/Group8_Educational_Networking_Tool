@@ -1,0 +1,140 @@
+
+#container{
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  margin-top: 20px;
+  z-index: 1;
+}
+
+.logo{
+    height: 100%;
+    width: 100%;
+    float: left;
+}
+
+.search{
+  border-radius: 10px;
+  margin-left:auto;
+  margin-right:auto;
+  width: 20rem;
+  height: 30px;
+}
+
+.nav-bar{
+   grid-row-start: 2;
+   grid-row-end: 3;
+   align-items: center;
+}
+
+.nav-bar button{
+  display: grid;
+}
+
+.nav-bar div{
+  font-size: larger;
+}
+
+
+.profile-icon{
+  display: inline;
+  text-align: right;
+  align-self: flex-start;
+  float: right;
+  margin-right: 15px;
+}
+
+.profile-icon img{
+  border: 0px solid red;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  top: 10px;
+}
+
+.profile-details{
+  display: grid;
+  grid-column-start: 2;
+  grid-column-end: 4;
+
+}
+.profile-details img{
+height: 10rem;
+width: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+}
+
+.itm{
+  text-align: center;
+  font-weight: bold;
+}
+.btn-wrapper{
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  border-style: solid;
+  border-color: white white grey white;
+}
+
+.btn-j{
+  border-color: white;
+  font-weight: bold;
+  background-color: white;
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+}
+.question{
+  display: grid;
+  align-content: flex-start;
+  padding: 10px;
+  grid-row-gap: 15px;
+}
+.question div{
+  text-align: center;
+  padding-bottom: 10px;
+  background-color: wheat;
+  border-radius: 10px;
+}
+
+.question textarea{
+  display: block;
+  height: 100px;
+  resize: none;
+}
+
+.details{
+  font-size: large;
+  background-color: skyblue;
+  margin: 5px;
+}
+
+.details div{
+  margin: 5px;
+}
+
+.int{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.int div{
+  margin: 20px;
+  font-size: large;
+  border: 2px solid black;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.add-item{ 
+  float: right;
+  font-size: large;
+  color: blue;
+  border-color: white;
+  border-radius: 20px;
+  background-color: white;
+}
