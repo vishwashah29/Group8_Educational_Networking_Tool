@@ -1,13 +1,18 @@
 import {useState,useEffect} from 'react'
 import Singleq from './Discuss'
 import AskQues from './AskQues'
+import {Cookies} from "react-cookie";
 
 const DiscussionForam = ({ques}) => {
+
+  const cookies = new Cookies();
+  const Cookie = cookies.get("userCookie");
+  // const [cookie1, setCookie] = useCookies(["userCookie"]);
 
     const [Discussions,setDiscussions] = useState (
         [
           {
-              id:1,
+              id:1,                    // this is discussion id 
               Title:'Compititve coding',
               Ques:'What is Software Enggineering',
               Author:'John Wick',
@@ -42,9 +47,9 @@ const DiscussionForam = ({ques}) => {
 
       const AddaQues = ({Ques,Topic}) =>
       {
-        const id=1;              // to be added curent user id  unique
-        const Author='me';       // current user name 
-        const status='student';  // if current student is prof or student
+        const id=Discussions.length+1;   // to be added Dicussion id unique
+        const Author=Cookie.name;       // current user name 
+        const status=Cookie.Status;    // if current student is prof or student
         const nwQues={id,Author,Ques,Topic,status}
         setDiscussions([...Discussions,nwQues]);
         console.log("ques: "+Discussions);
@@ -93,14 +98,13 @@ const DiscussionForam = ({ques}) => {
     return (
         <div className='discussion-box'>
             <div className="question-container">
-              
               <div>
                 {Discussions.map( (Discuss) => (
                   <>
                     <div className='discussionBox'>
                       <div>
                       <Singleq Discuss={Discuss} givAnswers={giveAnswer} AddAns={addAnswer}>
-                  </Singleq>
+                      </Singleq>
                       </div>
                     
                     </div>

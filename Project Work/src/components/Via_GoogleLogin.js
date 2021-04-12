@@ -3,6 +3,9 @@ import GoogleLogin from "react-google-login";
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { CookiesProvider, Cookies, useCookies } from "react-cookie";
+import {useHistory} from 'react-router-dom'
+
+
 //nesvwvChpJDKPWbUgnNqrMrs
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,45 +29,40 @@ const useStyles = makeStyles((theme) => ({
 const Via_GoogleLogin = () => {
 
   const cookies = new Cookies();
-  const userCookie = cookies.get("userCookie");
+  // const userCookie = cookies.get("userCookie");
   const [render, setRender] = useState(false);
 
   const client_id = process.env.REACT_APP_CLIENT_ID;
-  const [cookie, setCookie] = useCookies([""]);
+  const [cookie, setCookie] = useCookies(["userCookie"]);
   const [user, setUser] = useState(true);
 
-  console.log("Home-Rerender");
+  
   const classes = useStyles();
+  const history=useHistory();
 
 
   const responseGoogle = (response) => {
     console.log("Success");
+    let status = true;
     let authCookie = {
       email: response.profileObj.email,
       name: response.profileObj.name,
       GID: response.googleId,
+      Status : status,
     };
     console.log('yess'+authCookie);
-    console.log(authCookie.email);
-    console.log(authCookie.name);
-    console.log(authCookie.GID);
+   
+   
     setCookie("userCookie", authCookie);
 
-    // axios
-    //   .post(`${API_URL}/addreader`, authCookie)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    
     setUser(true);
     setRender(!render);
+    history.push('/main');
+
   };
-  useEffect(() => {
-    if (userCookie !== undefined) setUser(true);
-  });
+  // useEffect(() => {
+  //   if (userCookie !== undefined) setUser(true);
+  // });
 
     const fail = (res) => {
         console.log("Failed ", res);

@@ -1,7 +1,5 @@
 
 import React from 'react'
-
-// buttons icons
 import Shr from '@material-ui/icons/ShareOutlined';
 import Thup from '@material-ui/icons/ThumbUpAltOutlined';
 import Thup1 from '@material-ui/icons/ThumbUpAlt';
@@ -16,6 +14,7 @@ import {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
 
 import background1 from "./Images/logo.png";
+import {Cookies, useCookies } from "react-cookie";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,6 +42,9 @@ const Discuss = ({Discuss,givAnswers,AddAns}) => {
     const [yrAns,setYrans]     = useState('');
     const [likeCnt,setCnt]     = useState(false);
     const [dislikeCnt,setCnt1] = useState(false);
+    
+    const cookies = new Cookies();
+    const Cookie = cookies.get("userCookie");
 
     const classes = useStyles();
   
@@ -52,10 +54,9 @@ const Discuss = ({Discuss,givAnswers,AddAns}) => {
     }
     const onAdd =()=>
     {
-        // here id should be current users id
-        let id=1,comment=yrAns,Author='current user';
-        AddAns({id,Author:'me',comment:yrAns});
-        setAns([...Ans,{id,Author:"me",comment:yrAns}]);
+        let id=Discuss.id,Author=Cookie.name;
+        AddAns({id,Author:Author,comment:yrAns});
+        setAns([...Ans,{id,Author:Author,comment:yrAns}]);
     }
 
     const Printer = ()=>{

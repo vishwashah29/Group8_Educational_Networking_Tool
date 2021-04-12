@@ -4,6 +4,7 @@ import Pro from './Project';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import {Cookies} from "react-cookie";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
 
 const ProjectForum = () => {
     const classes = useStyles();
+    const cookies = new Cookies();
+    const Cookie = cookies.get("userCookie");
 
     const [Projects,setProjects] = useState([
         {
@@ -55,7 +58,7 @@ const ProjectForum = () => {
                         }
                 </div>
                 <div>
-                    {isP && 
+                    {Cookie.Status && 
                         <div className='AddAProject'>
                             <div>
                             <p className='AddProjTitle'>Add Project</p>
@@ -78,7 +81,7 @@ const ProjectForum = () => {
                               className={classes.button}
                               
                             >
-                              Ask
+                              Add
                             </Button>
                                 </div>
                         </div>
