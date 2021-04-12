@@ -10,7 +10,9 @@ import People from '@material-ui/icons/People';
 import { Unstable_TrapFocus } from '@material-ui/core';
 import DiscussionForam from './DiscussionForam';
 import ProjectForum from './ProjectForum';
-
+import { FaThermometerEmpty } from 'react-icons/fa';
+import {Link} from 'react-router-dom';
+import EditDetailsForm from './EditDetailsForm';
 const App=()=>{
 	//Default Person
 	const defalut_Person={
@@ -36,7 +38,9 @@ const App=()=>{
 	const [isAdding,setIsAdding]=useState(false);
 	const skill_temp=useRef('');
 	const [question,setQuestion]=useState('');
-	
+	const [editDetails,setEditDetails]=useState(false);
+
+	// REMOVE SKILL
 	const removeSkill=(e)=>{
 		const tempSkill=person.accomp.filter((i)=>i!==e.target.value);
 		setPerson({
@@ -45,6 +49,7 @@ const App=()=>{
 		})
 	}
 
+	//REMOVE INTERESTS
 	const removeInt=(e)=>{
 		const tempInt=person.interests.filter((i)=>i!==e.target.value);
 		setPerson({
@@ -52,6 +57,9 @@ const App=()=>{
 			interests: tempInt
 		})
 	}
+	
+
+	//PRINT DETAILS, AND ALL STUFFS OF LOWER HALF
 	const Printer=({str})=>{
 
 		if(str==="DETAILS")
@@ -59,11 +67,17 @@ const App=()=>{
 			return(
 				<div className='details'>
 					<div>Full Name: {fullName}</div>
+					
 					<div>Institute Name: {instituteName}</div>
+					
 					<div>Btech: {batchStart} - {batchEnd}</div>
+					
+					
+					
 					<div>Enrollment Number: {rollNum}</div>
+					
 					<div>Email : {email}</div>
-					<div><button></button></div>
+					<button onClick={()=>{setPage("EDITDETAILS")}}> Edit Details</button>
 				</div>
 			)
 		}
@@ -97,12 +111,12 @@ const App=()=>{
 		if(isAdding)
 			addSkill();
 		setIsAdding(!isAdding)
-
 			}}>+&nbsp;&nbsp;&nbsp;&nbsp; {isAdding?'Completed!!':'Add Achievements'}</button>				
 			</div>)
 		}
 	}
 
+	//UPPER HALF PROFILE PRINTER
 	const ProfilePrinter=()=>{
 		return(
 			<div className='profile-details'>
@@ -120,6 +134,7 @@ const App=()=>{
 	}
 
 
+	// ADDS TOPIC OF INTERESTS
 
 	const handleChange=(e)=>{
 		setTopic(e.target.value);
@@ -147,6 +162,8 @@ const App=()=>{
 		}
 	}
 
+	//ADD SKILL
+
 	const addSkill=()=>{
 		const temp=[...accomp,skill_temp.current.value];
 		setPerson({
@@ -156,6 +173,7 @@ const App=()=>{
 		)
 	}
 
+	// PROVIDE TOPIC MENU 
 	const Selecter=()=>{
 		return(
 			<>
@@ -174,6 +192,16 @@ const App=()=>{
 		)
 	}
 
+	const wrapSetPerson=(x)=>{
+        setPerson(x);
+    }
+    
+    const wrapSetPage=(x)=>{
+        setPage(x);
+    }
+
+	console.log(page);
+	// MAIN JSX 
     return(
       	<div id='container'>
 			<img src={logo} alt='logo' className='logo'/>
@@ -188,7 +216,7 @@ const App=()=>{
 			</nav>
 			
 			{
-				page==="PROFILE"?<ProfilePrinter/>:(page==="PROJECT"?<ProjectForum/>:<DiscussionForam ques={question}/>)
+				page==="PROFILE" ?<ProfilePrinter/>:(page==="PROJECT"?<ProjectForum/>:(page==="DISCUSSION"?<DiscussionForam ques={question}/>:<EditDetailsForm person={person} setPerson={setPerson} page={page} setPage={setPage}/>))
 			}
 			
       	</div>
