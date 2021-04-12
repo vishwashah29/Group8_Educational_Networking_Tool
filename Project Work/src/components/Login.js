@@ -1,7 +1,7 @@
 
 import React from 'react'
 import {useState} from 'react'
-import Sign from './Signinvia';
+import GLogin from './Via_GoogleLogin';
 import {useHistory} from 'react-router-dom'
 
 const Login = ({onlog}) => {
@@ -25,7 +25,12 @@ const Login = ({onlog}) => {
     return (
         <div className='container'>
              <form onSubmit={onsub} className='add-form'>
-            <Sign />
+                 <div className='Login-title'>
+                     <strong>Login</strong>
+                     <GLogin />
+                 </div>
+            
+
             <h4 style={{textAlign:'center'}}>-OR-</h4>
             <div className='form-control' >
                 {/* <label >Email-id</label>  */}
