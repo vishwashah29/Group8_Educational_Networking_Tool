@@ -23,11 +23,8 @@ const EditDetailsForm=({person, setPerson,page,setPage})=>{
         setPerson(temp);
 
         setPage("PROFILE");
-       /* wrapSetPerson(temp);
 
-        wrapSetPage("PROFILE");*/
-
-        // console.log(wrapSetPage.type);
+        
     }
 
     return(
