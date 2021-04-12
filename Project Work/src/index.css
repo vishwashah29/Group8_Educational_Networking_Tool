@@ -16,7 +16,19 @@ body {
   margin: 5px;
   padding: 15px;
 }
+.Login-title {
+  /* class for login page login title sub se uper vala*/
+  font-size: larger;
+  align-items: center;
+}
 
+.special {
+  /* in discussion forum ans is given by prof then it will pinned to top */
+  background-color: seagreen;
+}
+.normal {
+  border: 1px solid blue;
+}
 .discussAns {
   display: block;
   /* border: 1px solid lightblue; */
@@ -102,7 +114,7 @@ body {
   /* border-radius: 50px 0px 0px 50px; */
 }
 
-.question-container{
+.question-container {
   display: grid;
   grid-template-columns: 84% auto;
   border: 2px solid red;
@@ -292,8 +304,7 @@ body {
   justify-content: space-between;
 }
 
-.discussion-box{
-
+.discussion-box {
   grid-column-start: 2;
   grid-column-end: 4;
   grid-template-columns: 100%;
