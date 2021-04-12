@@ -4,9 +4,11 @@ import {useState} from 'react'
 import GLogin from './Via_GoogleLogin';
 import {useHistory} from 'react-router-dom'
 
+
 const Login = ({onlog}) => {
 
-    const history=useHistory()
+    const history=useHistory();
+    
     
     const [email,setemail] = useState ('')
     const [password,setpassword] = useState ('')
@@ -17,6 +19,8 @@ const Login = ({onlog}) => {
         
         console.log("ha login ma"); // from here onwards we have to check id passwords that will be handled in backend
         // onlog();
+
+
 
         // after successuful log in lead to main page 
         history.push("/main")

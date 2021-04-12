@@ -2,7 +2,7 @@
 import GoogleLogin from "react-google-login";
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { CookiesProvider, Cookies, useCookies } from "react-cookie";
+import { Cookies, useCookies } from "react-cookie";
 import {useHistory} from 'react-router-dom'
 
 

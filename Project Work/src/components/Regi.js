@@ -4,9 +4,12 @@ import {Link, useHistory,Redirect} from 'react-router-dom'
 import Prof from "../Images/logo.png"
 import Stu from "../Images/logo.png"
 import './Reg.css';
+import { Cookies, useCookies } from "react-cookie";
 
 const Regi = ({onadd}) => {
-    const history=useHistory()
+    const history=useHistory();
+
+    const [cookie, setCookie] = useCookies(["userCookie"]);
 
     const [Fname,setFName] = useState ('')
     const [Lname,setLName] = useState ('')
@@ -27,7 +30,17 @@ const Regi = ({onadd}) => {
     const onsub = (e) => {
        
         // implemet function to enter user data in database then redirect to main page
+
+        let email = (tog)?Semail:Pemail;
+
+        let authCookie = {
+          email: email,
+          name: Fname+" "+Lname,
+          GID: "",
+          Status : !tog,
+        };
        
+        setCookie("userCookie", authCookie);
         history.push('/main')
         console.log('ha');
         

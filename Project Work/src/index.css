@@ -22,6 +22,13 @@ body {
   align-items: center;
 }
 
+.special {
+  /* in discussion forum ans is given by prof then it will pinned to top */
+  background-color: seagreen;
+}
+.normal {
+  border: 1px solid blue;
+}
 .discussAns {
   display: block;
   /* border: 1px solid lightblue; */
