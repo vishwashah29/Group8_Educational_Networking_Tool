@@ -1,10 +1,11 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Pro from "./Project";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { Cookies } from "react-cookie";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +27,7 @@ const ProjectForum = () => {
   const classes = useStyles();
   const cookies = new Cookies();
   const Cookie = cookies.get("userCookie");
+  
 
   const [Projects, setProjects] = useState([
     {
@@ -44,8 +46,47 @@ const ProjectForum = () => {
         "here goes respective description here goes respective description here goes respective description here goes respective description here goes respective description",
     },
   ]);
-  const addProject = ({ Project }) => {
-    setProjects([...Projects]);
+  const [Topic, setTopic] = useState("");
+  const [Disc, setDisc] = useState("");
+
+  // aya Projects local useState chhe saruaat ma khali hase ane jevu aa page load thase pela badha project
+  // back end mathi fetch kari ne show karvana ane pachhi j rite search thay e rite show karvana
+  // ena mate serch box ma bhi implement karvanu chhe
+
+  useEffect(() => {
+      // axios
+      //   .post(url,)     // here url to be added
+      //   .then((res) => {                     // res will be json of name ,email,status
+      //    setProjects([...res]);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //     alert("Some err in loading projects");
+      //     return ;
+      //   });  
+  }, []);
+
+  
+  const addProject = () => {
+    let nwP = {
+      Title: Topic,
+      description: Disc,
+      Author: "me",
+    };
+    console.log(nwP);
+    setProjects([...Projects, nwP]);       // aa line jo database ma add thy tyare .then vala ma karvani 
+    // insert new project in database
+    // axios
+    //   .put(,nwP)     // here url to be added
+    //   .then((res) => {                     // res will be json of name ,email,status
+    //    
+    //    
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     alert("there is some err in adding a project");
+    //     return ;
+    //   });
   };
   const [isP, setISP] = useState(true);
   return (
@@ -64,6 +105,8 @@ const ProjectForum = () => {
                 id="outlined-basic"
                 label="Project Topic"
                 variant="outlined"
+                value={Topic}
+                onChange={(e) => setTopic(e.target.value)}
               />
             </div>
             <div>
@@ -73,6 +116,8 @@ const ProjectForum = () => {
                 multiline
                 rows={4}
                 variant="outlined"
+                value={Disc}
+                onChange={(e) => setDisc(e.target.value)}
               />
             </div>
             <div>
@@ -80,6 +125,9 @@ const ProjectForum = () => {
                 variant="contained"
                 color="primary"
                 className={classes.button}
+                onClick={() =>
+                  addProject({ Title: Topic, description: Disc, Author: "me" })
+                }
               >
                 Add
               </Button>
