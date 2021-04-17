@@ -27,7 +27,7 @@ const ProjectForum = () => {
   const cookies = new Cookies();
   const Cookie = cookies.get("userCookie");
 
-<<<<<<< HEAD
+
     const [Projects,setProjects] = useState([
         {
             id:1,
@@ -103,72 +103,8 @@ const ProjectForum = () => {
                     }
                 </div>
         </div>
-    )
-}
-=======
-  const [Projects, setProjects] = useState([
-    {
-      id: 1,
-      Author: "Saurabh Tiwari",
-      Title: "FingerPrint Based ATM System",
-      description:
-        "here goes respective description here goes respective description here goes respective description here goes respective description here goes respective description",
-      participants: ["abc", "pqr"],
-    },
-    {
-      id: 1,
-      Author: "Saurabh Tiwari",
-      Title: "FingerPrint Based ATM System",
-      description:
-        "here goes respective description here goes respective description here goes respective description here goes respective description here goes respective description",
-    },
-  ]);
-  const addProject = ({ Project }) => {
-    setProjects([...Projects]);
-  };
-  const [isP, setISP] = useState(true);
-  return (
-    <div style={{ display: "inline-flex" }} className="ProjOutBox">
-      <div>
-        {Projects.map((Project) => (
-          <Pro Project={Project} className="ProjOutBox"></Pro>
-        ))}
-      </div>
-      <div>
-        {Cookie.Status && (
-          <div className="AddAProject">
-            <div>
-              <p className="AddProjTitle">Add Project</p>
-              <TextField
-                id="outlined-basic"
-                label="Project Topic"
-                variant="outlined"
-              />
-            </div>
-            <div>
-              <TextField
-                id="outlined-multiline-static"
-                label="Discription"
-                multiline
-                rows={4}
-                variant="outlined"
-              />
-            </div>
-            <div>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-              >
-                Add
-              </Button>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+    );
 };
->>>>>>> 410bfadd16090d4a75ecd9aec1456a3691f33bcd
+
 
 export default ProjectForum;
