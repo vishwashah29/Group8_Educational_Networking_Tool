@@ -64,15 +64,15 @@ const ProjectForum = () => {
     }
     const [isP,setISP] = useState(true);
     return (
-        <div style={{display:'inline-flex'}} className='ProjOutBox' >
-                <div>
+        <div style={{display:'inline-flex'}} className='ProjOutBox,Projectoutermain' >
+                <div className='feed'>
                         {
                             Projects.map ( (Project)=>(
                                 <Pro Project={Project} className='ProjOutBox'></Pro>
                             ))
                         }
                 </div>
-                <div>
+                <div className='Add'>
                     {isP && 
                         <div className='AddAProject'>
                             <div>
