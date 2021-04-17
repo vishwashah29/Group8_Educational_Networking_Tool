@@ -7,13 +7,17 @@
 }
 
 .logo{
-    height: 100%;
-    width: 100%;
+    height: 80%;
+    width: 80%;
     float: left;
+
+    
 }
 
 .search{
   border-radius: 10px;
+  border-color:rgb(112, 110, 110);
+  margin-top: 30px;
   margin-left:auto;
   margin-right:auto;
   width: 20rem;
@@ -21,6 +25,8 @@
 }
 
 .nav-bar{
+  margin: 30px;
+  padding-left: 30px;
    grid-row-start: 2;
    grid-row-end: 3;
    align-items: center;
@@ -28,10 +34,41 @@
 
 .nav-bar button{
   display: grid;
+  background: none;
+  border: none;
 }
+
+.nav-bar button:hover,
+.nav-bar button:active,
+.nav-bar button:link,
+.nav-bar button:visited
+{
+  display: grid;
+  background: none;
+  border: none;
+  /*outline: none;
+  color: black;*/
+
+}
+
+
 
 .nav-bar div{
   font-size: larger;
+  color: rgb(112, 110, 110);
+}
+
+.nav-bar div:hover
+{
+  font-size: larger;
+  color: rgb(0, 0, 0);
+}
+
+
+.nav-bar div:active
+{
+  font-size: larger;
+  color: rgb(212, 22, 22);
 }
 
 
@@ -40,16 +77,20 @@
   text-align: right;
   align-self: flex-start;
   float: right;
-  margin-right: 15px;
+  margin-right: 50px;
+  margin-top: 13px;
+  
+ 
 }
 
 .profile-icon img{
   border: 0px solid red;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height:30%;
+  width: 30%;
   position: relative;
   top: 10px;
+  
 }
 
 .profile-details{

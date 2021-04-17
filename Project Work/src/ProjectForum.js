@@ -31,13 +31,29 @@ const ProjectForum = () => {
             id:1,
             Author:'Saurabh Tiwari',
             Title:'FingerPrint Based ATM System',
-            description:'here goes respective description here goes respective description here goes respective description here goes respective description here goes respective description'
+            description:`This project is a desktop application that uses the fingerprint of users for authentication. Since each individual has
+            a unique fingerprint, this method of using fingerprint as a means of authentication to access your ATM is safer and 
+            more secure than using an ATM card. Users need not carry their ATM cards with them at all times – they can use 
+            their fingerprint to access ATM services.
+            This project is a desktop application that uses the fingerprint of users for authentication. Since each individual has
+            a unique fingerprint, this method of using fingerprint as a means of authentication to access your ATM is safer and 
+            more secure than using an ATM card. Users need not carry their ATM cards with them at all times – they can use 
+            their fingerprint to access ATM services.`           
+            
+    
         },
         {
             id:1,
             Author:'Saurabh Tiwari',
             Title:'FingerPrint Based ATM System',
-            description:'here goes respective description here goes respective description here goes respective description here goes respective description here goes respective description'
+            description:`This project is a desktop application that uses the fingerprint of users for authentication. Since each individual has
+            a unique fingerprint, this method of using fingerprint as a means of authentication to access your ATM is safer and 
+            more secure than using an ATM card. Users need not carry their ATM cards with them at all times – they can use 
+            their fingerprint to access ATM services.
+            This project is a desktop application that uses the fingerprint of users for authentication. Since each individual has
+            a unique fingerprint, this method of using fingerprint as a means of authentication to access your ATM is safer and 
+            more secure than using an ATM card. Users need not carry their ATM cards with them at all times – they can use 
+            their fingerprint to access ATM services.`   
         }
     
     ]);
