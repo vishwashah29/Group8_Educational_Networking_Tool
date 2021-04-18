@@ -1,5 +1,5 @@
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import Pro from "./Project";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
@@ -27,7 +27,6 @@ const ProjectForum = () => {
   const classes = useStyles();
   const cookies = new Cookies();
   const Cookie = cookies.get("userCookie");
-  
 
   const [Projects, setProjects] = useState([
     {
@@ -54,41 +53,60 @@ const ProjectForum = () => {
   // ena mate serch box ma bhi implement karvanu chhe
 
   useEffect(() => {
-      // axios
-      //   .post(url,)     // here url to be added
-      //   .then((res) => {                     // res will be json of name ,email,status
-      //    setProjects([...res]);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //     alert("Some err in loading projects");
-      //     return ;
-      //   });  
+    axios
+      .get("http://localhost:4000/GetProject") // here url to be added
+      .then((res) => {
+        // res will be json of name ,email,status
+        console.log("yes in project forum");
+
+        console.log(res);
+        setProjects(res.data);
+        console.log(Projects);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Some err in loading projects");
+        return;
+      });
   }, []);
 
-  
   const addProject = () => {
-    let nwP = {
+    const nwP = {
       Title: Topic,
-      description: Disc,
+      Description: Disc,
       Author: "me",
     };
     console.log(nwP);
-    setProjects([...Projects, nwP]);       // aa line jo database ma add thy tyare .then vala ma karvani 
+    // setProjects([...Projects, nwP]); // aa line jo database ma add thy tyare .then vala ma karvani
     // insert new project in database
-    // axios
-    //   .put(,nwP)     // here url to be added
-    //   .then((res) => {                     // res will be json of name ,email,status
-    //    
-    //    
+
+    axios
+      .post("http://localhost:4000/AddProject", nwP)
+      .then((res) => {
+        console.log("successfully added project");
+        console.log("succ", res);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("there is some err in adding a project");
+        return;
+      });
+    setProjects([...Projects, nwP]);
+
+    // fetch("http://localhost:4000/AddProject", {
+    //   method: "POST", // or 'PUT'
+
+    //   body: nwP,
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("Success:", data);
     //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     alert("there is some err in adding a project");
-    //     return ;
+    //   .catch((error) => {
+    //     console.error("Error:", error);
     //   });
   };
-  const [isP, setISP] = useState(true);
+  
   return (
     <div style={{ display: "inline-flex" }} className="ProjOutBox">
       <div>
@@ -125,9 +143,7 @@ const ProjectForum = () => {
                 variant="contained"
                 color="primary"
                 className={classes.button}
-                onClick={() =>
-                  addProject({ Title: Topic, description: Disc, Author: "me" })
-                }
+                onClick={addProject}
               >
                 Add
               </Button>

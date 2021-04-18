@@ -32,6 +32,16 @@ const Regi = ({ onadd }) => {
   const onsub = (e) => {
     // implemet function to enter user data in database then redirect to main page
 
+    console.log("rending req");
+    // axios
+    //   .get("http://localhost:5000/hii")
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
     let email = tog ? Semail : Pemail;
 
     if (tog === false && Pcode !== "DA-Prof-hey-hum") {
@@ -59,6 +69,7 @@ const Regi = ({ onadd }) => {
     //   .catch((err) => {
     //     console.log(err);
     //   });
+
     setCookie("userCookie", authCookie);
     history.push("/main");
   };

@@ -47,13 +47,14 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
 
   const ans = (id) => {
     let curAns = givAnswers(id);
+    console.log("ans for id:", id, " ans ", curAns);
     setAns(curAns);
   };
   const onAdd = () => {
     let id = Discuss.id,
       Author = Cookie.name;
-    AddAns({ id: id, Author: Author, status: Cookie.Status, comment: yrAns });
-    let cur = { id: id, Author: Author, status: Cookie.Status, comment: yrAns };
+    AddAns({ id: id, Author: Author, status: Cookie.Status, Comment: yrAns });
+    let cur = { id: id, Author: Author, status: Cookie.Status, Comment: yrAns };
     if (Cookie.Status) setAns([cur, ...Ans]);
     else setAns([...Ans, cur]);
   };
@@ -65,21 +66,21 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
           return (
             <div className={`AnsCmt ${i.status ? "special" : "normal"}`}>
               <h4>{i.Author}</h4>
-              <p style={{ fontSize: "15px" }}>{i.comment}</p>
+              <p style={{ fontSize: "15px" }}>{i.Comment}</p>
             </div>
           );
         })}
       </>
     );
   };
-  // const Lkcnt = () =>
-  // {
-  //     return (
-  //         <>
-  //             {likeCnt && set}
-  //         </>
-  //     )
-  // }
+
+  const [Like, setLike] = useState(true);
+  const onTime = () => {
+    if (Like === false) return;
+    setLike(false);
+    if (th === true) Discuss.Cnt = Discuss.Cnt + 1;
+    else Discuss.Cnt = Discuss.Cnt - 1;
+  };
 
   return (
     <>
@@ -95,7 +96,7 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
           ></div>
 
           <h1 className="projhd" style={{ fontSize: "2vw" }}>
-            {Discuss.Ques}
+            {Discuss.Que}
           </h1>
         </div>
 
@@ -115,6 +116,7 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
               {Th && <Thup />}
               {!Th && <Thup1 />}
             </IconButton>
+
             <Button
               size="small"
               className={classes.margin}

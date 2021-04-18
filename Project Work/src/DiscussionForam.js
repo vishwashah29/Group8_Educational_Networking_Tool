@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Singleq from "./Discuss";
 import AskQues from "./AskQues";
 import { Cookies } from "react-cookie";
+import axios from "axios";
 
 const DiscussionForam = ({ ques }) => {
   const cookies = new Cookies();
@@ -11,14 +12,12 @@ const DiscussionForam = ({ ques }) => {
   const [Discussions, setDiscussions] = useState([
     {
       id: 1, // this is discussion id
-      Title: "Compititve coding",
+      Title: "Compititve coding", // review abt renfedknn  // give me some res  abt node js
       Ques: "What is Software Enggineering",
       Author: "John Wick",
       status: "prof",
-      Likes: "50",
-      dislikes: "0",
-      share: "3",
-      Topic: "none",
+      Cnt: 3,
+      Topic: "none", // "academic //devolopmet "
     },
     {
       id: 2,
@@ -26,25 +25,36 @@ const DiscussionForam = ({ ques }) => {
       Ques: "What is Software Enggineering ",
       Author: "saurabh Tiwari",
       status: "prof",
-      Likes: "50",
-      dislikes: "0",
-      share: "3",
+      Cnt:2,
       Topic: "none",
     },
   ]);
-
-  const addQuestion = (ques) => {
-    const id = 5,
-      Author = "Jainit";
-    setDiscussions([...Discussions, { id, Author, Ques: ques }]);
-    console.log(ques);
-  };
 
   const AddaQues = ({ Ques, Topic }) => {
     const id = Discussions.length + 1; // to be added Dicussion id unique
     const Author = Cookie.name; // current user name
     const status = Cookie.Status; // if current student is prof or student
-    const nwQues = { id, Author, Ques, Topic, status };
+    const nwQues = {
+      id: id,
+      Author: Author,
+      Que: Ques,
+      Topic: Topic,
+      Title: "jovu jose aa su kam rakhyu tu",
+      status: status,
+      Cnt:0,
+    };
+
+    axios
+      .post("http://localhost:4000/AddQuestion", nwQues)
+      .then((res) => {
+        console.log("answer added successful");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("adding ques couse some eerr");
+        return;
+      });
+
     setDiscussions([...Discussions, nwQues]);
     console.log("ques: " + Discussions);
     console.log(nwQues);
@@ -72,14 +82,57 @@ const DiscussionForam = ({ ques }) => {
     },
   ]);
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/GetQuestion") // here url to be added
+      .then((res) => {
+        // res will be json of name ,email,status
+        console.log("yes in disscussion forum");
+
+        console.log(res);
+        setDiscussions(res.data);
+        console.log(Discussions);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Some err in loading projects");
+        return;
+      });
+
+    axios
+      .get("http://localhost:4000/GetAnswer") // here url to be added
+      .then((res) => {
+        // res will be json of name ,email,status
+        //console.log("yes in disscussion answer forum");
+        setAns(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Some err in loading projects");
+        return;
+      });
+  }, []);
+
   const giveAnswer = (id) => {
-    let temp = Answers.filter((i) => i.id === id && i.status == 1);
-    let srt = Answers.filter((i) => i.id === id && i.status == 0);
+    console.log("Ans here ", Answers);
+    let temp = Answers.filter((i) => i.id === id && i.status === true);
+    let srt = Answers.filter((i) => i.id === id && i.status !== true);
+
     if (srt.length > 0) temp = [...temp, ...srt];
     return temp;
   };
 
   const addAnswer = (Ans) => {
+    axios
+      .post("http://localhost:4000/AddAnswer", Ans)
+      .then((res) => {
+        console.log("answer added successful");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("adding ans couse some eerr");
+        return;
+      });
     setAns([...Answers, Ans]);
   };
 
@@ -105,7 +158,7 @@ const DiscussionForam = ({ ques }) => {
             </>
           ))}
         </div>
-        <div>
+        <div className="AskQueBox">
           <AskQues addQue={AddaQues} />
         </div>
       </div>
