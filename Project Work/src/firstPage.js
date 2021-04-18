@@ -23,8 +23,8 @@ const Home=()=>{
                 </div>
                 <div className='logo'>
                     <img src={logo} alt='Logo of website'/>
-                <div className='title'>
-                MEETUP PLATFORM FOR <br/>LEARNERS AND EXPERTS.
+                <div className='title'><center>
+                MEETUP PLATFORM FOR LEARNERS AND EXPERTS.</center>
                 </div>
                 </div>
             </div>
