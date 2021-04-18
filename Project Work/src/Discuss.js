@@ -74,14 +74,6 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
     );
   };
 
-  const [Like, setLike] = useState(true);
-  const onTime = () => {
-    if (Like === false) return;
-    setLike(false);
-    if (th === true) Discuss.Cnt = Discuss.Cnt + 1;
-    else Discuss.Cnt = Discuss.Cnt - 1;
-  };
-
   return (
     <>
       <div className="projectbx">
