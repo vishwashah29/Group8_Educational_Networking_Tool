@@ -1,11 +1,10 @@
-import React from 'react';
-import backImg from './Images/homeImage.jpg';
-import logo from './Images/logo.png';
 
+import logo from './Images/logo.png';
+import NavBar from './menuPages/NavBar';
 import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
 import {FaFilter} from 'react-icons/fa';
 import CheckCircleOutlineOutlinedIcon from '@material-ui/icons/CheckCircleOutlineOutlined';
-import {Link} from 'react-router-dom';
+
 
 import './firstPage.css';
 const Home=()=>{
@@ -13,18 +12,11 @@ const Home=()=>{
     return(
         <>
             <div className='upper-container'>
-                <div className='link-container'>
-                    
-                    <Link className='link-item' to='/signup'>SIGN UP</Link>
-                    <Link className='link-item' to='/login'>LOGIN</Link>
-                    <Link className='link-item' to='/contactus'>CONTACT US</Link>
-                    <Link className='link-item' to='/blog'>BLOG</Link>
-                    <Link className='link-item' to='/home'>HOME</Link>
-                </div>
+                <NavBar/>
                 <div className='logo'>
                     <img src={logo} alt='Logo of website'/>
                 <div className='title'>
-                MEETUP PLATFORM FOR <br/>LEARNERS AND EXPERTS.
+                MEETUP PLATFORM FOR <br/>LEARNERS AND EXPERTS
                 </div>
                 </div>
             </div>
