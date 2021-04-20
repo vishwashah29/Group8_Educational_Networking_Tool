@@ -31,8 +31,8 @@ const Regi = ({ onadd }) => {
   };
   const onsub = (e) => {
     // implemet function to enter user data in database then redirect to main page
-
-    console.log("rending req");
+    e.preventDefault();
+    console.log("sending req");
     // axios
     //   .get("http://localhost:5000/hii")
     //   .then((res) => {
@@ -44,13 +44,15 @@ const Regi = ({ onadd }) => {
 
     let email = tog ? Semail : Pemail;
 
-    if (tog === false && Pcode !== "DA-Prof-hey-hum") {
-      // show msg k prof code khoto chhe
-      console.log("HA khoto chhe");
-      window.alert("Your Prof code is invalid");
-      return;
-    }
-    let isP = Pcode === "DA-Prof-hey-hum" ? true : false;
+    // if (tog === false && (Pcode !== "John Reese" || Pcode !== "DA-Admin-hey-hum"))
+    //   {
+    //   // show msg k prof code khoto chhe
+    //   console.log("HA khoto chhe");
+    //   window.alert("Your Prof code is invalid");
+    //   return;
+    // }
+    let isP = Pcode === "John Reese" ? true : false;
+    let isA = Pcode === "DA-Admin-hey-hum" ? true : false;
     let authCookie = {
       email: email,
       name: Fname + " " + Lname,
@@ -58,20 +60,31 @@ const Regi = ({ onadd }) => {
       Status: true,
       Code: Pcode,
     };
-    // jo details valid hoy to response ane nahiter err
-    // axios
-    //   .post(`${API_URL}/addreader`, authCookie) // url tobe added
-    //   .then((res) => {
-    //     console.log(res);
-    //     setCookie("userCookie",authCookie);
-    //     history.push("/main");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+
+    let NewUser = {
+      email: email,
+      firstname: Fname,
+      lastname: Lname,
+      password: password,
+      interest: [],
+      admincode: Pcode,
+    };
+    console.log("new user", NewUser);
+
+    axios
+      .post("http://localhost:9999/api/register", NewUser) // url tobe added
+      .then((res) => {
+        console.log("response", res);
+        setCookie("userCookie", authCookie);
+        history.push("/main");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     setCookie("userCookie", authCookie);
-    history.push("/main");
+    // history.push("/main");
+    return;
   };
 
   return (

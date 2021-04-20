@@ -2,12 +2,14 @@ import React from "react";
 import { useState } from "react";
 import GLogin from "./Via_GoogleLogin";
 import { useHistory } from "react-router-dom";
-require("dotenv").config();
-// import axios from 'axios';
 
+import { Cookies, useCookies } from "react-cookie";
+import axios from "axios";
+
+require("dotenv").config();
 const Login = ({ onlog }) => {
   const history = useHistory();
-
+  const [cookie, setCookie] = useCookies(["userCookie"]);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
 
@@ -16,29 +18,35 @@ const Login = ({ onlog }) => {
 
     console.log("ha login ma"); // from here onwards we have to check id passwords that will be handled in backend
     // onlog();
-    
+
     let credi = {
       email: email,
       password: password,
     };
-    // email ane password check kari ne jo valid hoy to response ma name,email,status 
-    // axios
-    //   .post(,credi)     // here url to be added
-    //   .then((res) => {
-    //     console.log(res);
-    //    setCookie("userCookie", res);
-    //    history.push("/main");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-            return ;     
-    //     setemail("");
-    //     setpassword("");
-    //   });
+    // email ane password check kari ne jo valid hoy to response ma name,email,status
+    axios
+      .post("http://localhost:9999/api/login", credi) // here url to be added
+      .then((res) => {
+        console.log(res);
+        let cookie = {
+          name: res.data.name,
+          Status: res.data.Status,
+          email: res.data.email,
+        };
+        setCookie("userCookie", cookie); // aaya response ma Status jose regisetr vali cookie type no response hovo joi
+        // console.log(cookie);
+        history.push("/main");
+      })
+      .catch((err) => {
+        console.log(err);
+        return;
+        setemail("");
+        setpassword("");
+      });
 
     // after successuful log in lead to main page
     // backend nu thy pachhi aa  history push kadhi nakhvu
-    history.push("/main");
+    // history.push("/main");
   };
   return (
     <div className="container">
