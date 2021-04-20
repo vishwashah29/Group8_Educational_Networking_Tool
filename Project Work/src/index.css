@@ -68,9 +68,10 @@ body {
 
   max-width: 1000px;
   overflow: auto;
-  padding: 30px;
+  /* padding: 30px; */
+  /* padding-bottom: 30px; */
   padding-right: 0px;
-  border: 1px solid steelblue;
+    /* border: 1px solid steelblue; */
   border-radius: 10px;
 }
 .AskBox {
@@ -112,7 +113,26 @@ body {
   border: 3px;
 }
 
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  height: 100px;
+  width: 1000px;
+  /* overflow: hidden; */
+  overflow-x: hidden;
+  background-color: aqua;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
 
+.container1 {
+  padding: 2px 16px;
+}
+
+.author{
+  float: left;
+}
 
 .ProjectDiscrp {
   /* Project discription */
@@ -136,16 +156,17 @@ body {
   width: 30%;
   background-repeat: no-repeat;
   background-size:contain;
+  float: left;
 }
 
 .container {
   max-width: 500px;
-  margin: 30px auto;
+  /* margin: 30px auto; */
   overflow: auto;
   min-height: 300px;
   /* border: 1px solid steelblue; */
   /* background-color: #fff; */
-  padding: 30px;
+  /* padding: 30px; */
   /* border-radius: 50px; */
   /* border-radius: 50px 0px 0px 50px; */
 }

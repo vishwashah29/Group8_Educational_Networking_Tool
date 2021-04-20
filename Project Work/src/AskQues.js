@@ -45,7 +45,7 @@ const AskQues = ({addQue}) => {
 
     const [Ques,setQue] = useState('');
     const classes = useStyles();
-    const [Tog,setTog] = useState(false);
+    const [Tog,setTog] = useState(true);
     const [Topic,setTopic] = useState('None');
     const handleChange = (event) => {
       setTopic(event.target.value);
@@ -55,19 +55,17 @@ const AskQues = ({addQue}) => {
     return (
         <div>
 
-                
+
                 <div className='discussionBox'>
                   <div className='AskBox'>
-                       
-                       <Button
+                       <div
                               variant="contained"
                               color="default"
-                              className={classes.button}
+                              className={classes.div}
                               endIcon={<Question1 fontSize="small" > </Question1>}
-                              onClick={()=>(setTog(!Tog))}
                             >
                               Ask Question
-                            </Button>
+                            </div>
 
                   </div>
                   {Tog && 
@@ -115,8 +113,7 @@ const AskQues = ({addQue}) => {
 
                       </div>
                   }
-                    
-                 </div>
+                    </div>
         </div>
     )
 }
