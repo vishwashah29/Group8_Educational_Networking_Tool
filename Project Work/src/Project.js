@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
 const Project = ({Project}) => {
     const classes = useStyles();
     return (
-        <div className='ProjectBox'>
+      <div className='card' style={{backgroundColor:'#dae2f5', height:'500px', width:'700px', margin:'7%', borderRadius:'20px'}}>
+        {/* <div className='ProjectBox'> */}
                 <div style={{display:'inline-flex'}}>
                     
                         <div className='profilepic projhd'
@@ -41,24 +42,25 @@ const Project = ({Project}) => {
                                     }}>
                         </div>
                         <div>
-                            <div style={{display:'inline-flex'}}>
+                            <div style={{display:'inline-flex', margin:'0px'}}>
                                 <h2 className='projhd'>{Project.Title}</h2>
                                
-
+                                </div>
                         <Button className='ApplyBtn' >
                             Apply
                         <PersonAddIcon fontSize="small" />
                         </Button>
-                            </div>
+                            
                         </div>
                     
                 </div>
-
+                <hr></hr>
                 <div>
                     <p className='ProjectDiscrp'>{Project.description}</p>
                 </div>
                 
         </div>
+        // </div>
     )
 }
 
