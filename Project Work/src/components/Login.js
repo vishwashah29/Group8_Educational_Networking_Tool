@@ -24,8 +24,11 @@ const Login = ({ onlog }) => {
       password: password,
     };
     // email ane password check kari ne jo valid hoy to response ma name,email,status
+     const URL = process.env.REACT_APP_BACKEND_URL;
+    //  const URL = "http://localhost:9999";
+    console.log("URL:",URL);
     axios
-      .post("http://localhost:9999/api/login", credi) // here url to be added
+      .post(`${URL}/api/login`, credi) // here url to be added
       .then((res) => {
         console.log(res);
         let cookie = {

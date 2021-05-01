@@ -4,11 +4,14 @@ import AskQues from "./AskQues";
 import { Cookies } from "react-cookie";
 import axios from "axios";
 
+require("dotenv").config();
+
 const DiscussionForam = ({ ques }) => {
   const cookies = new Cookies();
   const Cookie = cookies.get("userCookie");
   // const [cookie1, setCookie] = useCookies(["userCookie"]);
-
+  const URL = process.env.REACT_APP_BACKEND_URL;
+  // const URL = "http://localhost:9999";
   const [Discussions, setDiscussions] = useState([
     {
       id: 1, // this is discussion id
@@ -45,7 +48,7 @@ const DiscussionForam = ({ ques }) => {
     };
 
     axios
-      .post("http://localhost:4000/AddQuestion", nwQues)
+      .post(`${URL}/AddQuestion`, nwQues)
       .then((res) => {
         console.log("answer added successful");
       })
@@ -84,7 +87,7 @@ const DiscussionForam = ({ ques }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/GetQuestion") // here url to be added
+      .get(`${URL}/GetQuestion`) // here url to be added
       .then((res) => {
         // res will be json of name ,email,status
         console.log("yes in disscussion forum");
@@ -100,7 +103,7 @@ const DiscussionForam = ({ ques }) => {
       });
 
     axios
-      .get("http://localhost:4000/GetAnswer") // here url to be added
+      .get(`${URL}/GetAnswer`) // here url to be added
       .then((res) => {
         // res will be json of name ,email,status
         //console.log("yes in disscussion answer forum");
@@ -124,7 +127,7 @@ const DiscussionForam = ({ ques }) => {
 
   const addAnswer = (Ans) => {
     axios
-      .post("http://localhost:4000/AddAnswer", Ans)
+      .post(`${URL}/AddAnswer`, Ans)
       .then((res) => {
         console.log("answer added successful");
       })

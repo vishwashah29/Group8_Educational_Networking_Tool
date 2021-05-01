@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useState, useEffect } from "react";
 import Pro from "./Project";
@@ -8,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import { Cookies } from "react-cookie";
 import axios from "axios";
 
+require("dotenv").config();
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -28,6 +28,8 @@ const ProjectForum = () => {
   const classes = useStyles();
   const cookies = new Cookies();
   const Cookie = cookies.get("userCookie");
+  const URL = process.env.REACT_APP_BACKEND_URL;
+  // const URL = "http://localhost:9999";
 
   const [Projects, setProjects] = useState([
     {
@@ -55,7 +57,7 @@ const ProjectForum = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/GetProject") // here url to be added
+      .get(`${URL}/GetProject`) // here url to be added
       .then((res) => {
         // res will be json of name ,email,status
         console.log("yes in project forum");
@@ -82,7 +84,7 @@ const ProjectForum = () => {
     // insert new project in database
 
     axios
-      .post("http://localhost:4000/AddProject", nwP)
+      .post(`${URL}/AddProject`, nwP)
       .then((res) => {
         console.log("successfully added project");
         console.log("succ", res);
@@ -107,7 +109,7 @@ const ProjectForum = () => {
     //     console.error("Error:", error);
     //   });
   };
-  
+
   return (
     <div style={{ display: "inline-flex" }} className="ProjOutBox">
       <div>
@@ -157,4 +159,3 @@ const ProjectForum = () => {
 };
 
 export default ProjectForum;
-

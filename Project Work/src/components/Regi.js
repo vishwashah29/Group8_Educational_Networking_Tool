@@ -70,9 +70,11 @@ const Regi = ({ onadd }) => {
       admincode: Pcode,
     };
     console.log("new user", NewUser);
-
+    const URL = process.env.REACT_APP_BACKEND_URL;
+    // const URL = "http://localhost:9999";
+    console.log("url=", URL);
     axios
-      .post("http://localhost:9999/api/register", NewUser) // url tobe added
+      .post(`${URL}/api/register`, NewUser) // url tobe added
       .then((res) => {
         console.log("response", res);
         setCookie("userCookie", authCookie);
