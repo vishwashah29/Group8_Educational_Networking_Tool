@@ -6,6 +6,18 @@ import Stu from "../Images/logo.png";
 import "./Reg.css";
 import { Cookies, useCookies } from "react-cookie";
 import axios from "axios";
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: 200,
+    },
+  },
+}));
+
 require("dotenv").config();
 
 const Regi = ({ onadd }) => {
@@ -22,6 +34,7 @@ const Regi = ({ onadd }) => {
   const [cpassword, setcpassword] = useState("");
   const [tog, setTog] = useState(true);
   const [tog1, setTog1] = useState(false);
+  const [Val, setVal] = useState(false);
 
   const clkprof = () => {
     setTog(false);
@@ -41,6 +54,11 @@ const Regi = ({ onadd }) => {
     //   .catch((err) => {
     //     console.log(err);
     //   });
+    if (password !== cpassword) {
+      setVal(true);
+      setcpassword("");
+      return;
+    }
 
     let email = tog ? Semail : Pemail;
 
@@ -69,13 +87,15 @@ const Regi = ({ onadd }) => {
       interest: [],
       admincode: Pcode,
     };
-    console.log("new user", NewUser);
+
     const URL = process.env.REACT_APP_BACKEND_URL;
-    // const URL = "http://localhost:9999";
-    console.log("url=", URL);
+
     axios
       .post(`${URL}/api/register`, NewUser) // url tobe added
       .then((res) => {
+
+
+        
         console.log("response", res);
         setCookie("userCookie", authCookie);
         history.push("/main");
@@ -129,19 +149,19 @@ const Regi = ({ onadd }) => {
         <div className="form-control">
           <div className="inline-flex-par">
             <div>
-              <input
-                className="text-box"
-                type="text"
-                placeholder="First Name"
+              <TextField
+                id="standard-error-helper-text"
+                label="FirstName"
+                variant="outlined"
                 value={Fname}
                 onChange={(e) => setFName(e.target.value)}
               />
             </div>
             <div>
-              <input
-                className="text-box"
-                type="text"
-                placeholder="Last Name"
+              <TextField
+                id="standard-error-helper-text"
+                label="LastName"
+                variant="outlined"
                 value={Lname}
                 onChange={(e) => setLName(e.target.value)}
               />
@@ -150,11 +170,12 @@ const Regi = ({ onadd }) => {
         </div>
         {tog && (
           <div className="form-control">
-            {/* <label >Email-id</label>  */}
-            <input
-              className="text-box"
+            <TextField
+              fullWidth
+              id="standard-error-helper-text"
+              label="Student Email"
               type="email"
-              placeholder="Student Email"
+              variant="outlined"
               value={Semail}
               onChange={(e) => setSemail(e.target.value)}
             />
@@ -164,20 +185,32 @@ const Regi = ({ onadd }) => {
           <div>
             <div className="form-control">
               {/* <label >Email-id</label>  */}
-              <input
+              {/* <input
                 className="text-box"
                 type="email"
                 placeholder="Work Email"
+                value={Pemail}
+                onChange={(e) => setPemail(e.target.value)}
+              /> */}
+              <TextField
+                fullWidth
+                id="standard-error-helper-text"
+                label="Professor Email"
+                type="email"
+                variant="outlined"
                 value={Pemail}
                 onChange={(e) => setPemail(e.target.value)}
               />
             </div>
             <div className="form-control">
               {/* <label >Email-id</label>  */}
-              <input
-                className="text-box"
+
+              <TextField
+                fullWidth
+                id="standard-error-helper-text"
+                label="Professor Code"
                 type="password"
-                placeholder="Professor code"
+                variant="outlined"
                 value={Pcode}
                 onChange={(e) => setPcode(e.target.value)}
               />
@@ -186,26 +219,32 @@ const Regi = ({ onadd }) => {
         )}
         <div className="form-control">
           {/* <label>password</label>  */}
-          <input
-            className="text-box"
-            type="password"
-            placeholder="Create password "
-            value={password}
-            onChange={(e) => setpassword(e.target.value)}
-          />
+         
+              <TextField
+                fullWidth
+                id="standard-error-helper-text"
+                label="Password"
+                type="password"
+                variant="outlined"
+                value={password}
+                onChange={(e) => setpassword(e.target.value)}
+              />
         </div>
 
         <div className="form-control">
           {/* <label>password</label>  */}
-          <input
-            className="text-box"
-            id="c_password"
+          
+          <TextField
+            fullWidth
+            required
+            error={Val}
+            id="standard-error-helper-text"
+            label="Password"
             type="password"
-            placeholder="Confirm password "
+            variant="outlined"
+            helperText={Val && 'Password do not match'}
             value={cpassword}
-            onChange={(e) => {
-              setcpassword(e.target.value);
-            }}
+            onChange={(e) => setcpassword(e.target.value)}
           />
         </div>
         <div>

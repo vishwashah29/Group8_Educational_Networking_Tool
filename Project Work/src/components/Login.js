@@ -6,17 +6,33 @@ import { useHistory } from "react-router-dom";
 import { Cookies, useCookies } from "react-cookie";
 import axios from "axios";
 
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: 200,
+    },
+  },
+}));
+
 require("dotenv").config();
 const Login = ({ onlog }) => {
+  const classes = useStyles();
   const history = useHistory();
   const [cookie, setCookie] = useCookies(["userCookie"]);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [Val, setVal] = useState(false);
+  const [Val1, setVal1] = useState(false);
+  
 
   const onsub = (e) => {
     e.preventDefault();
 
-    console.log("ha login ma"); // from here onwards we have to check id passwords that will be handled in backend
+    console.log("ha login ma", email); // from here onwards we have to check id passwords that will be handled in backend
     // onlog();
 
     let credi = {
@@ -24,9 +40,8 @@ const Login = ({ onlog }) => {
       password: password,
     };
     // email ane password check kari ne jo valid hoy to response ma name,email,status
-     const URL = process.env.REACT_APP_BACKEND_URL;
-    //  const URL = "http://localhost:9999";
-    console.log("URL:",URL);
+    const URL = process.env.REACT_APP_BACKEND_URL;
+
     axios
       .post(`${URL}/api/login`, credi) // here url to be added
       .then((res) => {
@@ -36,6 +51,22 @@ const Login = ({ onlog }) => {
           Status: res.data.Status,
           email: res.data.email,
         };
+
+        if (res.data.status == "e1") {
+          
+          setemail("");
+          setpassword("");
+
+          setVal1(true);
+          return;
+        }
+        if (res.data.status == "error") {
+          
+          setpassword("");
+          setVal(true);
+          return;
+        }
+
         setCookie("userCookie", cookie); // aaya response ma Status jose regisetr vali cookie type no response hovo joi
         // console.log(cookie);
         history.push("/main");
@@ -43,8 +74,7 @@ const Login = ({ onlog }) => {
       .catch((err) => {
         console.log(err);
         return;
-        setemail("");
-        setpassword("");
+      
       });
 
     // after successuful log in lead to main page
@@ -62,20 +92,43 @@ const Login = ({ onlog }) => {
         <h4 style={{ textAlign: "center" }}>-OR-</h4>
         <div className="form-control">
           {/* <label >Email-id</label>  */}
-          <input
+          {/* <input
             className="text-box"
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setemail(e.target.value)}
+          /> */}
+          <TextField
+            fullWidth
+            required
+            id="standard-error-helper-text"
+            label="Email"
+            error={Val1}
+            value={email}
+            variant="outlined"
+            helperText={Val1 && 'Invalid Email'}
+            onChange={(e) => setemail(e.target.value)}
           />
         </div>
         <div className="form-control">
           {/* <label>password </label>  */}
-          <input
+          {/* <input
             className="text-box"
             type="password"
             placeholder=" password "
+            value={password}
+            onChange={(e) => setpassword(e.target.value)}
+          /> */}
+          <TextField
+            fullWidth
+            required
+            error={Val}
+            id="standard-error-helper-text"
+            label="Password"
+            type="password"
+            variant="outlined"
+            helperText={Val && 'Invalid Password'}
             value={password}
             onChange={(e) => setpassword(e.target.value)}
           />
