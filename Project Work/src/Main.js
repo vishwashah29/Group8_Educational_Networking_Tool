@@ -65,6 +65,7 @@ const App=()=>{
 		if(str==="DETAILS")
 		{
 			return(
+				// <div className='card' style={{height:'220px', width:'1530px'}}>
 				<div className='details'>
 					<div>Full Name: {fullName}</div>
 					
@@ -77,14 +78,16 @@ const App=()=>{
 					<div>Enrollment Number: {rollNum}</div>
 					
 					<div>Email : {email}</div>
-					<button onClick={()=>{setPage("EDITDETAILS")}}> Edit Details</button>
+					<button style={{backgroundColor:'#4CAF50', border: 'none', color: 'white', padding: '15px 32px', textAlign:'center', textDecoration: 'none'}} onClick={()=>{setPage("EDITDETAILS")}}> Edit Details</button>
 				</div>
+				// </div>
 			)
 		}
 		if(str==='INT')
 		{	
 			return(
 				<>
+				{/* <div className='card' style={{height:'220px', width:'1530px'}}> */}
 				<div className='int'>
 				{interests.map((i)=>{
 					return <div> {i} <button name={interests} value={i} onClick={(e)=>removeInt(e)}>Remove</button></div>
@@ -93,8 +96,9 @@ const App=()=>{
 				</div>
 				<div className='add-btn-wrapper'>
 					{isAdding?<Selecter className='add-topic-selector'/>:''}
-					<button className='add-item' name={interests} onClick={(e)=>setIsAdding(!isAdding)}>+&nbsp;&nbsp;&nbsp;&nbsp; {isAdding?'Completed!!':'Add Interest'}</button>
+					<button className='add-item' style={{backgroundColor:'#4CAF50', border: 'none', color: 'white', padding: '15px 32px', textAlign:'center', textDecoration: 'none'}} name={interests} onClick={(e)=>setIsAdding(!isAdding)}>+&nbsp;&nbsp;&nbsp;&nbsp; {isAdding?'Completed!!':'Add Interest'}</button>
 				</div>
+				{/* </div> */}
 				</>
 			)
 		}
@@ -107,7 +111,7 @@ const App=()=>{
 					return <div> {i}&nbsp;&nbsp;&nbsp;&nbsp;<button name={accomp}value={i} onClick={(e)=>removeSkill(e)}>Remove</button></div>
 				})}
 				{isAdding?<input type='text' ref={skill_temp}/>:''}
-	<button className='add-item' name={accomp} onClick={(e)=>{
+	<button className='add-item' style={{backgroundColor:'#4CAF50', border: 'none', color: 'white', padding: '15px 32px', textAlign:'center', textDecoration: 'none'}} name={accomp} onClick={(e)=>{
 		if(isAdding)
 			addSkill();
 		setIsAdding(!isAdding)
@@ -119,6 +123,7 @@ const App=()=>{
 	//UPPER HALF PROFILE PRINTER
 	const ProfilePrinter=()=>{
 		return(
+			<div className='card' style={{height:'500px', width:'1530px'}}>
 			<div className='profile-details'>
 				<img className='itm' src={pic} alt='profilePic'/>
 				<div className='itm' >{fullName}</div>
@@ -129,6 +134,7 @@ const App=()=>{
 				<button onClick={()=>setStr('SKILL')}  className='btn3 btn-j'>Skills and Accomplishments</button>
 				</div>
 				<Printer str={str}/>
+			</div>
 			</div>
 		)
 	}
