@@ -173,11 +173,24 @@ body {
   font-size: 1rem;
   min-height: 70px;
   text-align: center;
-  
-  
-  
+
   margin-top: 10px;
   border-radius: 40px 40px 0px 0px;
+}
+.DiscussionHeader {
+  background-color: cadetblue;
+  padding: 10px;
+}
+.LikeDislikeCnt{
+  margin-top: 5%;
+}
+.Topictag{
+  background-color:#9fa19d;
+  border-radius: 20px 20px 20px 20px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5%;
+  text-align: center;
 }
 
 .LoginLogo {

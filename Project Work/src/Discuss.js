@@ -14,6 +14,7 @@ import TextField from "@material-ui/core/TextField";
 
 import background1 from "./Images/logo.png";
 import { Cookies, useCookies } from "react-cookie";
+import Project from "./Project";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,13 +33,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Discuss = ({ Discuss, givAnswers, AddAns }) => {
-  const [Th, setTh] = useState(false);
-  const [Thd, setThd] = useState(false);
+  const [Th, setTh] = useState(true);
+  const [Thd, setThd] = useState(true);
   const [Ans, setAns] = useState([]);
   const [rdMor, setRdmr] = useState(true);
   const [yrAns, setYrans] = useState("");
-  const [likeCnt, setCnt] = useState(false);
-  const [dislikeCnt, setCnt1] = useState(false);
+  const [cnt, setCnt] = useState(0);
+  const [mx, setMx] = useState(0);
 
   const cookies = new Cookies();
   const Cookie = cookies.get("userCookie");
@@ -57,6 +58,16 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
     let cur = { id: id, Author: Author, status: Cookie.Status, Comment: yrAns };
     if (Cookie.Status) setAns([cur, ...Ans]);
     else setAns([...Ans, cur]);
+  };
+  const inc = () => {
+    setTh(false);
+    setThd(true);
+    setMx(1);
+  };
+  const dcr = () => {
+    setTh(true);
+    setThd(false);
+    setMx(-1);
   };
 
   const Printer = () => {
@@ -77,50 +88,50 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
   return (
     <>
       <div className="projectbx">
-        <div className="inline-flex-proj">
-          <div
-            className="profilepic projhd"
-            style={{
-              backgroundImage: `url(${background1})`,
-              height: "50px",
-              width: "45px",
-            }}
-          ></div>
+        <div className="DiscussionHeader">
+          <div className="inline-flex-proj">
+            <div
+              className="profilepic projhd"
+              style={{
+                backgroundImage: `url(${background1})`,
+                height: "50px",
+                width: "45px",
+              }}
+            ></div>
 
-          <h1 className="projhd" style={{ fontSize: "2vw" }}>
-            {Discuss.Que}
-          </h1>
+            <h1 className="projhd" style={{ fontSize: "2vw" }}>
+              {Discuss.Que}
+            </h1>
+          </div>
+
+          <div>
+            <h3>
+              {Discuss.Author}{" "}
+              <h5 style={{ fontSize: "15px" }}> {Discuss.status}</h5>
+            </h3>
+          </div>
         </div>
 
         <div>
-          <h5>
-            {Discuss.Author}
-            <p style={{ fontSize: "15px" }}>{Discuss.status}</p>
-          </h5>
-        </div>
-        <div>
-          <h4>
-            <IconButton
-              aria-label="Thumbsup"
-              color="primary"
-              onClick={() => setTh(!Th)}
-            >
+          <div style={{ display: "inline-flex" }}>
+            <IconButton aria-label="Thumbsup" color="primary" onClick={inc}>
               {Th && <Thup />}
               {!Th && <Thup1 />}
             </IconButton>
-
-            <Button
-              size="small"
-              className={classes.margin}
-              onClick={() => setThd(!Thd)}
-            >
+            <div className='LikeDislikeCnt'>
+              <p>{cnt + mx}</p>
+            </div>
+            <Button size="small" className={classes.margin} onClick={dcr}>
               {Thd && <Thdn />}
               {!Thd && <Thdn1 />}
             </Button>
             <Button size="small" className={classes.margin}>
               <Shr />
             </Button>
-          </h4>
+            <div className="Topictag">
+              <p>{Discuss.Topic}</p>
+            </div>
+          </div>
         </div>
 
         <Printer />
