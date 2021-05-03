@@ -5,6 +5,8 @@ import Prof from "../Images/logo.png";
 import Stu from "../Images/logo.png";
 import "./Reg.css";
 import { Cookies, useCookies } from "react-cookie";
+import axios from "axios";
+require("dotenv").config();
 
 const Regi = ({ onadd }) => {
   const history = useHistory();
@@ -30,20 +32,46 @@ const Regi = ({ onadd }) => {
   const onsub = (e) => {
     // implemet function to enter user data in database then redirect to main page
 
+    console.log("rending req");
+    // axios
+    //   .get("http://localhost:5000/hii")
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
     let email = tog ? Semail : Pemail;
 
+    if (tog === false && Pcode !== "DA-Prof-hey-hum") {
+      // show msg k prof code khoto chhe
+      console.log("HA khoto chhe");
+      window.alert("Your Prof code is invalid");
+      return;
+    }
     let isP = Pcode === "DA-Prof-hey-hum" ? true : false;
     let authCookie = {
       email: email,
       name: Fname + " " + Lname,
       GID: "",
-      Status: isP,
+      Status: true,
       Code: Pcode,
     };
+    // jo details valid hoy to response ane nahiter err
+    // axios
+    //   .post(`${API_URL}/addreader`, authCookie) // url tobe added
+    //   .then((res) => {
+    //     console.log(res);
+    //     setCookie("userCookie",authCookie);
+    //     history.push("/main");
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
 
     setCookie("userCookie", authCookie);
     history.push("/main");
-    console.log("ha");
   };
 
   return (

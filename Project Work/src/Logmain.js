@@ -24,12 +24,14 @@ const Logmain = ({flg}) => {
         
                 <div className='inline-flex-parent'
                   style={{borderRadius:'50px'}}>
-                      <div>
+                    <div className='wrapper'>
+                    <div className='inner1'>
+                          <Syn />
+                        </div>
+                      <div className='inner2'>
                       {flg==='true' && <Log />}
                       {flg==='false' && <Regi/>}
                         </div>
-                        <div>
-                          <Syn />
                         </div>
                   </div>     
             </div>

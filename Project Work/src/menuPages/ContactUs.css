@@ -1,0 +1,35 @@
+.inline-contacts{
+    display: flex;
+    height: 40vh;
+    width:100vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    padding-top: 40px;
+
+}
+
+.inline-contacts img{
+    height: 120px;
+    width: 120px;
+}
+
+.inline-contacts div{
+    font-weight: bolder;
+    font-size: large;
+}
+
+.contact{
+    position: relative;
+}
+.contact-vars-display{
+    position: relative;
+    top: -100px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+}
+
+.contact-not-display{
+    
+}

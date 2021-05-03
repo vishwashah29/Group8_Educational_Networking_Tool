@@ -37,30 +37,16 @@ body {
   min-height: 30px;
 }
 
-.Projectoutermain {
-  width: 100%;
-}
-
-.feed {
-  width: 70%;
-}
-
-.Add{
-  width: 30%;
-}
-
 .ProjOutBox {
-  /*grid-column: 2 ;*/
-  margin: 10px;
+  margin: 30px auto;
+
   /* max-width: 1000px; */
   overflow: auto;
-  padding: 8px;
-  /*border: 1px solid #123123;*/
-  /*grid-column-start: 2;
-  grid-column-end: 5;*/
-  /*width: auto;*/
-  /*border-radius: 50px;*/
-  border: none;
+  padding: 10px;
+  border: 1px solid #123123;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  border-radius: 50px;
 }
 
 .discussionBox {
@@ -68,13 +54,13 @@ body {
 
   max-width: 1000px;
   overflow: auto;
-  padding: 30px;
+  /* padding: 30px; */
+  /* padding-bottom: 30px; */
   padding-right: 0px;
-  border: 1px solid steelblue;
+    /* border: 1px solid steelblue; */
   border-radius: 10px;
 }
 .AskBox {
-  grid-column: 3;
   margin: 0px;
   max-width: 1000px;
   overflow: auto;
@@ -87,8 +73,7 @@ body {
 }
 .projectbx {
   /* margin: 30px auto; */
-  
-  
+
   max-width: 1000px;
   overflow: auto;
   /* padding: 30px; */
@@ -97,33 +82,43 @@ body {
 }
 .projhd {
   /**/
-  
-  font-size: 0.7rem;
-  padding: 20px;
-  padding-right:190px;
-  margin: 10px auto;
+  background-color: aliceblue;
+  font-size: 2rem;
+  padding: 10px;
   border-radius: 15px;
 }
 .ApplyBtn {
-  background-color: green;
   /*Apply button in project form in each project*/
-  position: absolute;
   align-content: flex-end;
-  border: 3px;
 }
 
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  height: 100px;
+  width: 1000px;
+  /* overflow: hidden; */
+  overflow-x: hidden;
+  background-color: aqua;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
 
+.container1 {
+  padding: 2px 16px;
+}
+
+.author{
+  float: left;
+}
 
 .ProjectDiscrp {
   /* Project discription */
-  
   font-size: 1rem;
-  padding: 20px;
 }
 .ProjectBox {
   /* class of project forum each project outer div tag*/
-  background-color: aliceblue;
-  grid-column: 3;
   margin: 30px auto;
   border: 1px solid black;
   border-radius: 20px;
@@ -136,25 +131,29 @@ body {
   width: 30%;
   background-repeat: no-repeat;
   background-size:contain;
+  float: left;
 }
 
 .container {
   max-width: 500px;
-  margin: 30px auto;
+  /* margin: 30px auto; */
   overflow: auto;
   min-height: 300px;
   /* border: 1px solid steelblue; */
   /* background-color: #fff; */
-  padding: 30px;
+  /* padding: 30px; */
   /* border-radius: 50px; */
   /* border-radius: 50px 0px 0px 50px; */
 }
 
 .question-container {
   display: grid;
-  margin: 10px;
-  grid-template-columns: 84% auto;
-  border: none;
+  grid-template-columns: 70% auto;
+  /* width: 70%; */
+  border: 2px solid red;
+}
+.AskQueBox {
+  width: auto;
 }
 .containerbg {
   /*this class is for back ground image*/
@@ -178,15 +177,16 @@ body {
   /* border-radius: 50px; */
   /* border-radius: 10px 100px 10px 10px; */
 }
-
+.profilepic {
+  margin-top: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .AddAProject {
   /*in Project forum add project for profs */
-  width: 30%;
   margin: 30px;
   padding: 10px;
   align-content: space-between;
-  grid-column-start: 5;
-  grid-column-end: 8;
 }
 .AddProjTitle {
   /*in Project forum add project for profs  Title "Add New Project"*/
@@ -344,9 +344,8 @@ body {
   grid-column-start: 2;
   grid-column-end: 4;
   grid-template-columns: 100%;
-  border: none;
-  padding: 20px;
-  margin:10px;
+  /* width: 100%; */
+  /* display: inline-flex; */
 }
 
 .add-form {

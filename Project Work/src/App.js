@@ -22,7 +22,7 @@ function App() {
                  </Route>
 
                  <Route exact path='/home'>
-                   <Home/>
+                   <FirstPage/>
                    </Route>
 
                  <Route exact path='/blog' >

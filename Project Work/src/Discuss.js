@@ -83,29 +83,37 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
 
   return (
     <>
-      <div className="projectbx">
+      {/* <div className="projectbx"> */}
+
         <div className="inline-flex-proj">
-          <div
-            className="profilepic projhd"
+
+        <div className="card" style={{ overflow: "hidden" }}>
+
+          <image className="profilepic"
             style={{
               backgroundImage: `url(${background1})`,
-              height: "50px",
-              width: "45px",
-            }}
-          ></div>
+              height: "200px",
+              width: "150px",
+              float: "left",
+            }}></image>
+          <div className="container1">
 
-          <h1 className="projhd" style={{ fontSize: "2vw" }}>
-            {Discuss.Ques}
-          </h1>
+            <h5 className="Author">
+              {Discuss.Author}
+              <p style={{ fontSize: "15px" }}>{Discuss.status}</p>
+            </h5>
+            <h1 >
+              {Discuss.Ques}
+            </h1>
+          </div>
         </div>
 
-        <div>
-          <h5>
-            {Discuss.Author}
-            <p style={{ fontSize: "15px" }}>{Discuss.status}</p>
-          </h5>
-        </div>
-        <div>
+
+      </div>
+
+      <div>
+        <div className="card" style={{ backgroundColor: "whitesmoke", height: "150px" }}>
+
           <h4>
             <IconButton
               aria-label="Thumbsup"
@@ -127,7 +135,8 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
               <Shr />
             </Button>
           </h4>
-        </div>
+
+        <hr></hr>
 
         <Printer />
         <div>
@@ -144,7 +153,7 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
             {rdMor ? "read more" : "read less"}
           </Button>
         </div>
-        <div className="">
+        <div className="" style={{ padding: "10px" }}>
           <TextField
             id="standard-textarea"
             label="Your Answer"
@@ -163,7 +172,10 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
             <Send fontSize="small" />
           </IconButton>
         </div>
+        </div>
+
       </div>
+      {/* </div> */}
     </>
   );
 };

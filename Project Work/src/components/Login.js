@@ -30,8 +30,8 @@ const Login = ({onlog}) => {
         <div className='container'>
              <form onSubmit={onsub} className='add-form'>
                  <div className='Login-title'>
-                     <strong>Login</strong>
-                     <GLogin />
+                   <center>  <strong>Login</strong> </center>
+                    <center> <GLogin /> </center>
                  </div>
             
 
@@ -56,7 +56,7 @@ const Login = ({onlog}) => {
             <input type='submit' value='Login' className='btn btn-block' />
             
         </form>
-        <h3>Don't have account yet?</h3>
+       <center> <h3>Don't have account yet?</h3> </center>
         <button onClick={()=>history.push("/signup") } className='btn-ot'> Create an account</button>
         
 
