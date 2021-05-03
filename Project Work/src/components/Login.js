@@ -137,7 +137,7 @@ const Login = ({ onlog }) => {
         <input type="submit" value="Login" className="btn btn-block" />
       </form>
       <h3>Don't have account yet?</h3>
-      <button onClick={() => history.push("/signup")} className="btn-ot">
+      <button data-testid="create-new-acc" onClick={() => history.push("/signup")} className="btn-ot">
         {" "}
         Create an account
       </button>

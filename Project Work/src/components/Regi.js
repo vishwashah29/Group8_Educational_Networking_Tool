@@ -75,7 +75,7 @@ const Regi = ({ onadd }) => {
       email: email,
       name: Fname + " " + Lname,
       GID: "",
-      Status: true,
+      Status: isP || isA,
       Code: Pcode,
     };
 
@@ -93,12 +93,13 @@ const Regi = ({ onadd }) => {
     axios
       .post(`${URL}/api/register`, NewUser) // url tobe added
       .then((res) => {
-
-
-        
-        console.log("response", res);
-        setCookie("userCookie", authCookie);
-        history.push("/main");
+        if (res.data.status === "ok") {
+          console.log("response", res);
+          setCookie("userCookie", authCookie);
+          history.push("/main");
+        } else {
+          alert(res.data.error);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -219,21 +220,21 @@ const Regi = ({ onadd }) => {
         )}
         <div className="form-control">
           {/* <label>password</label>  */}
-         
-              <TextField
-                fullWidth
-                id="standard-error-helper-text"
-                label="Password"
-                type="password"
-                variant="outlined"
-                value={password}
-                onChange={(e) => setpassword(e.target.value)}
-              />
+
+          <TextField
+            fullWidth
+            id="standard-error-helper-text"
+            label="Password"
+            type="password"
+            variant="outlined"
+            value={password}
+            onChange={(e) => setpassword(e.target.value)}
+          />
         </div>
 
         <div className="form-control">
           {/* <label>password</label>  */}
-          
+
           <TextField
             fullWidth
             required
@@ -242,7 +243,7 @@ const Regi = ({ onadd }) => {
             label="Password"
             type="password"
             variant="outlined"
-            helperText={Val && 'Password do not match'}
+            helperText={Val && "Password do not match"}
             value={cpassword}
             onChange={(e) => setcpassword(e.target.value)}
           />

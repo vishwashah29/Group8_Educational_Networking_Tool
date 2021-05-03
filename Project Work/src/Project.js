@@ -26,17 +26,12 @@ const Project = ({ Project }) => {
   return (
     <div className="ProjectBox">
       <div style={{ display: "inline-flex" }}>
-        <div
-          className="profilepic projhd"
-          style={{
-            backgroundImage: `url(${background1})`,
-            height: "5vw",
-            width: "4vw",
-          }}
-        ></div>
+        <div>
+          <img className="ImgProj" src={background1} alt="Logo of website" />
+        </div>
         <div>
           <div style={{ display: "inline-flex" }}>
-            <h2 className="projhd">{Project.Title}</h2>
+            <h2 className="projhd">{Project.Title}Hiii</h2>
 
             <Button className="ApplyBtn">
               Apply
@@ -47,7 +42,9 @@ const Project = ({ Project }) => {
       </div>
 
       <div>
-        <p className="ProjectDiscrp">{Project.Description}</p>
+        <p className="ProjectDiscrp" style={{ display: "inline-block" }}>
+          {Project.Description}
+        </p>
       </div>
     </div>
   );
