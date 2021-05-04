@@ -28,10 +28,12 @@ const DiscussionForam = ({ ques }) => {
       Ques: "What is Software Enggineering ",
       Author: "saurabh Tiwari",
       status: "prof",
-      Cnt:2,
+      Cnt: 2,
       Topic: "none",
     },
   ]);
+
+  const [Dis_Original, setDis_Original] = useState([]);
 
   const AddaQues = ({ Ques, Topic }) => {
     const id = Discussions.length + 1; // to be added Dicussion id unique
@@ -44,7 +46,7 @@ const DiscussionForam = ({ ques }) => {
       Topic: Topic,
       Title: "jovu jose aa su kam rakhyu tu",
       status: status,
-      Cnt:0,
+      Cnt: 0,
     };
 
     axios
@@ -94,6 +96,7 @@ const DiscussionForam = ({ ques }) => {
 
         console.log(res);
         setDiscussions(res.data);
+        setDis_Original(res.data);
         console.log(Discussions);
       })
       .catch((err) => {
@@ -124,6 +127,20 @@ const DiscussionForam = ({ ques }) => {
     if (srt.length > 0) temp = [...temp, ...srt];
     return temp;
   };
+  const filter_search = (fltt) => {
+    
+    if(fltt==='') 
+    {
+      setDiscussions(Dis_Original);
+      return;
+    }
+    // console.log("fliter",fltt);
+    const temp = Dis_Original.filter((i) => i.Topic === fltt || i.Author === fltt);
+    setDiscussions(temp);
+    // console.log("filter kare",temp);
+    // console.log("filter kare",Discussions);
+    
+  };
 
   const addAnswer = (Ans) => {
     axios
@@ -143,10 +160,19 @@ const DiscussionForam = ({ ques }) => {
     console.log({ Answers });
   }, [Answers]);
 
+  const [flt, setFlt] = useState('');
   return (
     <div className="discussion-box">
       <div className="question-container">
         <div>
+          <input type="text"
+          value={flt}
+          onChange={(e)=>setFlt(e.target.value)}
+          >
+          
+          </input>
+          <button onClick={()=>filter_search(flt)}>sub</button>
+          
           {Discussions.map((Discuss) => (
             <>
               <div className="discussionBox">
