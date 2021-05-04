@@ -90,14 +90,21 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
       <div className="projectbx">
         <div className="DiscussionHeader">
           <div className="inline-flex-proj">
-            <div
+            {/* <div
               className="profilepic projhd"
               style={{
                 backgroundImage: `url(${background1})`,
                 height: "50px",
                 width: "45px",
               }}
-            ></div>
+            ></div> */}
+            <div style={{paddingRight:'10px'}}>
+              <img
+                className="DiscussIMG"
+                src={background1}
+                alt="Logo of website"
+              />
+            </div>
 
             <h1 className="projhd" style={{ fontSize: "2vw" }}>
               {Discuss.Que}
@@ -112,13 +119,13 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
           </div>
         </div>
 
-        <div>
+        <div className="LikeDislikeBox">
           <div style={{ display: "inline-flex" }}>
             <IconButton aria-label="Thumbsup" color="primary" onClick={inc}>
               {Th && <Thup />}
               {!Th && <Thup1 />}
             </IconButton>
-            <div className='LikeDislikeCnt'>
+            <div className="LikeDislikeCnt">
               <p>{cnt + mx}</p>
             </div>
             <Button size="small" className={classes.margin} onClick={dcr}>

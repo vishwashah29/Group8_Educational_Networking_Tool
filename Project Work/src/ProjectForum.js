@@ -112,7 +112,7 @@ const ProjectForum = () => {
 
   return (
     <div
-      style={{ border: "1px solid red", width: "100%" }}
+      style={{ width: "100%" }}
       className="ProjOutBox"
     >
       <div >

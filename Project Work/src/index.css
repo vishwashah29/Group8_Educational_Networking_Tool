@@ -36,6 +36,11 @@ body {
   width: 80%;
   min-height: 30px;
 }
+.ForShadow{
+  box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 5px rgba(0, 0, 0, 0.19);
+  margin: 10px;
+  padding:10px;
+}
 
 .ProjOutBox {
   /* margin: 30px auto; */
@@ -43,12 +48,18 @@ body {
   /* max-width: 1000px; */
   overflow: auto;
   padding: 10px;
-  border: 1px solid #123123;
+  /* border: 1px solid #123123; */
   display: grid;
   grid-template-columns: 70% 30%;
   grid-column-start: 2;
   grid-column-end: 4;
   border-radius: 50px;
+  
+}
+.LikeDislikeBox{
+  border-bottom:2px solid black ;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .discussionBox {
@@ -57,11 +68,22 @@ body {
   max-width: 1000px;
   overflow: auto;
   padding: 30px;
-  padding-right: 0px;
+  /* padding-right: px; */
   border: 1px solid steelblue;
   border-radius: 10px;
+  box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 5px rgba(0, 0, 0, 0.19);
 }
+.discussionBox1 {
+  margin: 30px auto;
 
+  max-width: 1000px;
+  overflow: auto;
+  padding: 30px;
+  /* padding-right: 0px; */
+  border: 1px solid steelblue;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 5px rgba(0, 0, 0, 0.19);
+}
 .AskBox {
   margin: 0px;
   max-width: 1000px;
@@ -78,9 +100,12 @@ body {
 
   max-width: 1000px;
   overflow: auto;
-  /* padding: 30px; */
+ 
+  padding: 20px;
   /* border: 1px solid steelblue; */
   border-radius: 10px;
+  /* box-shadow: 2px 4px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 5px rgba(0, 0, 0, 0.19); */
+  
 }
 .projhd {
   /**/
@@ -88,6 +113,15 @@ body {
   font-size: 2rem;
   padding: 10px;
   border-radius: 15px;
+  
+}
+.DiscussIMG{
+  background-color: aliceblue;
+  border-radius: 15px;
+  max-width: 90px;
+  min-height: 90px;
+  
+  max-height: 100px;
 }
 .ImgProj {
   max-width: 90px;
@@ -128,10 +162,11 @@ body {
   display: grid;
   grid-template-columns: 70% auto;
   /* width: 70%; */
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 .AskQueBox {
   width: auto;
+  
 }
 .containerbg {
   /*this class is for back ground image*/
@@ -191,6 +226,7 @@ body {
   padding-right: 10%;
   padding-top: 5%;
   text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .LoginLogo {

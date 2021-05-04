@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 const Project = ({ Project }) => {
   const classes = useStyles();
   return (
-    <div className="ProjectBox">
+    <div className="ProjectBox ForShadow">
       <div style={{ display: "inline-flex" }}>
         <div>
           <img className="ImgProj" src={background1} alt="Logo of website" />

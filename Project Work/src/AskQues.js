@@ -50,7 +50,7 @@ const AskQues = ({ addQue }) => {
 
   return (
     <div>
-      <div className="discussionBox">
+      <div className="discussionBox1">
         <div className="AskBox">
           <Button
             variant="contained"
@@ -70,10 +70,11 @@ const AskQues = ({ addQue }) => {
                   Topic
                 </InputLabel>
                 <Select
+                  fullWidth
                   labelId="demo-simple-select-outlined-label"
                   id="demo-simple-select-outlined"
                   value={Topic}
-                  fullWidth
+                  
                   onChange={handleChange}
                   style={{ width: "100%" }}
                   label="Topic"
