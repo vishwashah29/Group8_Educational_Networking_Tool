@@ -111,27 +111,40 @@ const ProjectForum = () => {
   };
 
   return (
-    <div style={{ display: "inline-flex" }} className="ProjOutBox">
-      <div>
+    <div
+      style={{ width: "100%" }}
+      className="ProjOutBox"
+    >
+      <div >
         {Projects.map((Project) => (
-          <Pro Project={Project} className="ProjOutBox"></Pro>
+          <Pro
+            Project={Project}
+            style={{ width: "50%", display: "block" }}
+          ></Pro>
         ))}
       </div>
-      <div>
+      <div >
         {Cookie.Status && (
           <div className="AddAProject">
-            <div>
-              <p className="AddProjTitle">Add Project</p>
+
+              <div className="AddProjTitle">
+                <h3 style={{paddingTop:'15px'}}>Add Project</h3>
+              </div>
+              
+              <div style={{backgroundColor:'rgb(192, 215, 235)'}}>
               <TextField
+                fullWidth
                 id="outlined-basic"
                 label="Project Topic"
                 variant="outlined"
+                style={{padding:'10px'}}
                 value={Topic}
                 onChange={(e) => setTopic(e.target.value)}
               />
-            </div>
-            <div>
+           
               <TextField
+                fullWidth
+                style={{padding:'10px'}}
                 id="outlined-multiline-static"
                 label="Discription"
                 multiline
