@@ -30,7 +30,7 @@ const ProjectForum = () => {
   const Cookie = cookies.get("userCookie");
   const URL = process.env.REACT_APP_BACKEND_URL;
   // const URL = "http://localhost:9999";
-
+  const [Proj_Org, setProj_Org] = useState([]);
   const [Projects, setProjects] = useState([
     {
       id: 1,
@@ -64,6 +64,7 @@ const ProjectForum = () => {
 
         console.log(res);
         setProjects(res.data);
+        setProj_Org(res.data);
         console.log(Projects);
       })
       .catch((err) => {
@@ -91,31 +92,35 @@ const ProjectForum = () => {
       })
       .catch((err) => {
         console.log(err);
-        alert("there is some err in adding a project");
+        alert("There is some error in adding a project");
         return;
       });
     setProjects([...Projects, nwP]);
-
-    // fetch("http://localhost:4000/AddProject", {
-    //   method: "POST", // or 'PUT'
-
-    //   body: nwP,
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("Success:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
+  };
+  const [flt, setFlt] = useState("");
+  const filter_search = (fltt) => {
+    if (fltt === "") {
+      setProjects(Proj_Org);
+      return;
+    }
+    // console.log("fliter",fltt);
+    const temp = Proj_Org.filter((i) => i.Title === fltt || i.Author === fltt);
+    setProjects(temp);
+    // console.log("filter kare",temp);
+    // console.log("filter kare",Discussions);
   };
 
   return (
-    <div
-      style={{ width: "100%" }}
-      className="ProjOutBox"
-    >
-      <div >
+    <div style={{ width: "100%" }} className="ProjOutBox">
+      <div>
+        <div>
+          <input
+            type="text"
+            value={flt}
+            onChange={(e) => setFlt(e.target.value)}
+          ></input>
+          <button onClick={() => filter_search(flt)}>sub</button>
+        </div>
         {Projects.map((Project) => (
           <Pro
             Project={Project}
@@ -123,28 +128,27 @@ const ProjectForum = () => {
           ></Pro>
         ))}
       </div>
-      <div >
+      <div>
         {Cookie.Status && (
           <div className="AddAProject">
+            <div className="AddProjTitle">
+              <h3 style={{ paddingTop: "15px" }}>Add Project</h3>
+            </div>
 
-              <div className="AddProjTitle">
-                <h3 style={{paddingTop:'15px'}}>Add Project</h3>
-              </div>
-              
-              <div style={{backgroundColor:'rgb(192, 215, 235)'}}>
+            <div style={{ backgroundColor: "rgb(192, 215, 235)" }}>
               <TextField
                 fullWidth
                 id="outlined-basic"
                 label="Project Topic"
                 variant="outlined"
-                style={{padding:'10px'}}
+                style={{ padding: "10px" }}
                 value={Topic}
                 onChange={(e) => setTopic(e.target.value)}
               />
-           
+
               <TextField
                 fullWidth
-                style={{padding:'10px'}}
+                style={{ padding: "10px" }}
                 id="outlined-multiline-static"
                 label="Discription"
                 multiline

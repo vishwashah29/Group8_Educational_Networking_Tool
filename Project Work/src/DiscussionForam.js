@@ -61,8 +61,8 @@ const DiscussionForam = ({ ques }) => {
       });
 
     setDiscussions([...Discussions, nwQues]);
-    console.log("ques: " + Discussions);
-    console.log(nwQues);
+    // console.log("ques: " + Discussions);
+    // console.log(nwQues);
   };
 
   const [Answers, setAns] = useState([
@@ -94,10 +94,10 @@ const DiscussionForam = ({ ques }) => {
         // res will be json of name ,email,status
         console.log("yes in disscussion forum");
 
-        console.log(res);
+        // console.log(res);
         setDiscussions(res.data);
         setDis_Original(res.data);
-        console.log(Discussions);
+        // console.log(Discussions);
       })
       .catch((err) => {
         console.log(err);
