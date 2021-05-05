@@ -241,7 +241,7 @@ const App = () => {
   return (
     <div id="container">
       <img src={logo} alt="logo" className="logo" />
-      <input type="text" className="search" placeholder="Search"></input>
+      {/* <input type="text" className="search" placeholder="Search"></input> */}
       {/*Can set image of profile"*/}
       <div className="profile-icon">
         <img src={pic} />
@@ -274,7 +274,7 @@ const App = () => {
       ) : page === "PROJECT" ? (
         <ProjectForum />
       ) : page === "DISCUSSION" ? (
-        <DiscussionForam ques={question} />
+        <DiscussionForam ques={question} />    //filter  
       ) : (
         <EditDetailsForm
           person={person}

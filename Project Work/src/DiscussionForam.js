@@ -131,7 +131,7 @@ const DiscussionForam = ({ ques }) => {
     
     if(fltt==='') 
     {
-      setDiscussions(Dis_Original);
+      setDiscussions(Dis_Original); // dis_org ,Discussion
       return;
     }
     // console.log("fliter",fltt);
