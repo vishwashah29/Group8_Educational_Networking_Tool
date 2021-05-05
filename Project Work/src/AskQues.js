@@ -83,7 +83,7 @@ const AskQues = ({ addQue }) => {
                   <MenuItem value={"Development"}>Development</MenuItem>
                   <MenuItem value={"Academic"}>Academic</MenuItem>
                   <MenuItem value={"Cultural"}>Cultural</MenuItem>
-                  <MenuItem value={"Genral"}>Genral</MenuItem>
+                  <MenuItem value={"General"}>General</MenuItem>
                 </Select>
               </FormControl>
             </div>

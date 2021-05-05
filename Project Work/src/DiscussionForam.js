@@ -58,7 +58,7 @@ const DiscussionForam = ({ ques }) => {
         return;
       });
 
-    setDiscussions([...Discussions, nwQues]);
+    setDiscussions([ nwQues,...Discussions]);
     console.log("ques: " + Discussions);
     console.log(nwQues);
   };
