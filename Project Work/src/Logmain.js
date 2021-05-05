@@ -25,10 +25,11 @@ const Logmain = ({ flg }) => {
           className="inline-flex-parent LoginOutBox"
           style={{ borderRadius: "50px" }}
         >
-          <div>
+          <div >
             {flg === "true" && <Log />}
             {flg === "false" && <Regi />}
           </div>
+          {/* <hr></hr> */}
           <div style={{ paddingTop: "30px" }}>
             <div className="LoginLogo">
               <img

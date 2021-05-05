@@ -1,38 +1,48 @@
-
-#container{
+#container {
   display: grid;
   grid-template-columns: 20% 60% 20%;
   margin-top: 20px;
   z-index: 1;
 }
 
-.logo{
-    height: 80%;
-    width: 80%;
-    float: left;
-
-    
+.logo {
+  height: 80%;
+  width: 80%;
+  float: left;
 }
-
-.search{
+.skills {
+  background-color: rgb(106, 212, 241);
+  border: 1px solid black;
   border-radius: 10px;
-  border-color:rgb(112, 110, 110);
+  padding: 10px;
+  margin: 20px;
+}
+.skill1 {
+  background-color: rgc(164, 219, 235);
+}
+.search {
+  border-radius: 10px;
+  border-color: rgb(112, 110, 110);
   margin-top: 30px;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 20rem;
   height: 30px;
 }
 
-.nav-bar{
+.nav-bar {
   margin: 30px;
   padding-left: 30px;
-   grid-row-start: 2;
-   grid-row-end: 3;
-   align-items: center;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  align-items: center;
+}
+.profile-icon1 {
+  height: 0px;
+  border: 1px solid blue;
 }
 
-.nav-bar button{
+.nav-bar button {
   display: grid;
   background: none;
   border: none;
@@ -41,130 +51,144 @@
 .nav-bar button:hover,
 .nav-bar button:active,
 .nav-bar button:link,
-.nav-bar button:visited
-{
+.nav-bar button:visited {
   display: grid;
   background: none;
   border: none;
   /*outline: none;
   color: black;*/
-
 }
 
-
-
-.nav-bar div{
+.nav-bar div {
   font-size: larger;
   color: rgb(112, 110, 110);
 }
 
-.nav-bar div:hover
-{
+.nav-bar div:hover {
   font-size: larger;
   color: rgb(0, 0, 0);
 }
 
-
-.nav-bar div:active
-{
+.nav-bar div:active {
   font-size: larger;
   color: rgb(212, 22, 22);
 }
 
-
-.profile-icon{
-  width: 30%;
-  display: inline;
+.profile-icon {
+  width: 100%;
+  /* border:2px solid black; */
+  display: inline-flex;
+  align-items: flex-end;
   text-align: right;
-  align-self: flex-start;
-  float: right;
-  margin-right: 50px;
-  margin-top: 13px;
-  
- 
+
+  margin-left: 20px;
+  /* margin-top: 13px; */
+}
+.profile-icon sup {
+  word-break: keep-all;
 }
 
-.profile-icon img{
+.profile-icon img {
   border: 0px solid red;
   border-radius: 50%;
-  height:30%;
+  height: 30%;
   width: 30%;
   position: relative;
   top: 10px;
-  
 }
 
-.profile-details{
+.profile-details {
   display: grid;
   grid-column-start: 2;
   grid-column-end: 4;
-
 }
-.profile-details img{
-height: 10rem;
-width: 10rem;
+.profile-details img {
+  height: 10rem;
+  width: 10rem;
   margin-left: auto;
   margin-right: auto;
   border-radius: 50%;
 }
 
-.itm{
+.itm {
   text-align: center;
   font-weight: bold;
 }
-.btn-wrapper{
+.btn-wrapper {
   display: flex;
+  padding-bottom: 2px;
   align-items: flex-end;
   flex-wrap: wrap;
   justify-content: space-evenly;
   border-style: solid;
   border-color: white white grey white;
+  height: 90px;
+}
+.btn-wrapper Button:afterClick {
+  border-bottom: 2px solid black;
 }
 
-.btn-j{
+.addskill {
+  margin-left: 20px;
+}
+
+.removeButton {
+  border: 0px;
+  background-color: rgb(106, 212, 241);
+  float: right;
+}
+.btn-j {
   border-color: white;
   font-weight: bold;
   background-color: white;
   font-size: 20px;
   margin-left: auto;
   margin-right: auto;
+
   z-index: 1;
 }
-.question{
+.question {
   display: grid;
   align-content: flex-start;
   padding: 10px;
   grid-row-gap: 15px;
 }
-.question div{
+.question div {
   text-align: center;
   padding-bottom: 10px;
   background-color: wheat;
   border-radius: 10px;
 }
 
-.question textarea{
+.question textarea {
   display: block;
   height: 100px;
   resize: none;
 }
 
-.details{
+.details {
   font-size: large;
-  background-color: skyblue;
+  background-color: rgb(163, 219, 235);
+  /* margin: 5px; */
+}
+
+.details div {
   margin: 5px;
 }
 
-.details div{
-  margin: 5px;
-}
-
-.int{
+.int {
   display: grid;
   grid-template-columns: 50% 50%;
+  background-color: rgb(163, 219, 235);
+}
+.inrO {
+  background-color: rgb(163, 219, 235);
 }
 
-.int div{
+.interest {
+  background-color: rgb(106, 212, 241);
+}
+.int div {
   margin: 20px;
   font-size: large;
   border: 2px solid black;
@@ -172,11 +196,11 @@ width: 10rem;
   border-radius: 10px;
 }
 
-.add-item{ 
+.add-item {
   float: right;
   font-size: large;
   color: blue;
   border-color: white;
   border-radius: 20px;
-  background-color: white;
+  background-color: rgb(163, 219, 235);
 }

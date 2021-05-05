@@ -85,8 +85,11 @@ const Login = ({ onlog }) => {
     <div className="container">
       <form onSubmit={onsub} className="add-form">
         <div className="Login-title">
-          <strong>Login</strong>
+          <h2 style={{textAlign: "center" }}>Login</h2>
+          
+          <div style={{padding:'15px',marginLeft:'25%'}}>
           <GLogin />
+          </div>
         </div>
 
         <h4 style={{ textAlign: "center" }}>-OR-</h4>
@@ -136,7 +139,7 @@ const Login = ({ onlog }) => {
 
         <input type="submit" value="Login" className="btn btn-block" />
       </form>
-      <h3>Don't have account yet?</h3>
+      <h3 style={{textAlign:'center'}}>Don't have account yet?</h3>
       <button data-testid="create-new-acc" onClick={() => history.push("/signup")} className="btn-ot">
         {" "}
         Create an account

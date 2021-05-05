@@ -6,6 +6,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { Cookies } from "react-cookie";
 import axios from "axios";
+import pic from "./Images/profilepic.png";
+import SearchIcon from "@material-ui/icons/Search";
+import IconButton from "@material-ui/core/IconButton";
 
 require("dotenv").config();
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +33,7 @@ const ProjectForum = () => {
   const Cookie = cookies.get("userCookie");
   const URL = process.env.REACT_APP_BACKEND_URL;
   // const URL = "http://localhost:9999";
-
+  const [Proj_Org, setProj_Org] = useState([]);
   const [Projects, setProjects] = useState([
     {
       id: 1,
@@ -64,6 +67,7 @@ const ProjectForum = () => {
 
         console.log(res);
         setProjects(res.data);
+        setProj_Org(res.data);
         console.log(Projects);
       })
       .catch((err) => {
@@ -72,6 +76,20 @@ const ProjectForum = () => {
         return;
       });
   }, []);
+
+  const [flt, setFlt] = useState("");
+  
+  const filter_search = (fltt) => {
+    if (fltt === "") {
+      setProjects(Proj_Org);
+      return;
+    }
+    // console.log("fliter",fltt);
+    const temp = Proj_Org.filter((i) => i.Title === fltt || i.Author === fltt);
+    setProjects(temp);
+    // console.log("filter kare",temp);
+    // console.log("filter kare",Discussions);
+  };
 
   const addProject = () => {
     const nwP = {
@@ -87,6 +105,8 @@ const ProjectForum = () => {
       .post(`${URL}/AddProject`, nwP)
       .then((res) => {
         console.log("successfully added project");
+        alert("successfully added project");
+        
         console.log("succ", res);
       })
       .catch((err) => {
@@ -96,26 +116,29 @@ const ProjectForum = () => {
       });
     setProjects([...Projects, nwP]);
 
-    // fetch("http://localhost:4000/AddProject", {
-    //   method: "POST", // or 'PUT'
-
-    //   body: nwP,
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("Success:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
   };
 
   return (
-    <div
-      style={{ width: "100%" }}
-      className="ProjOutBox"
-    >
-      <div >
+    <div style={{ width: "100%" }} className="ProjOutBox">
+      <div>
+        <div>
+          <TextField
+            style={{ width: "93%"}}
+            id="outlined-search"
+            label="Search"
+            type="search"
+            //  variant="outlined"
+            value={flt}
+            onChange={(e) => setFlt(e.target.value)}
+          ></TextField>
+          <IconButton
+            aria-label="Thumbsup"
+            color="primary"
+            onClick={() => filter_search(flt)}
+          >
+            <SearchIcon />
+          </IconButton>
+        </div>
         {Projects.map((Project) => (
           <Pro
             Project={Project}
@@ -123,28 +146,33 @@ const ProjectForum = () => {
           ></Pro>
         ))}
       </div>
-      <div >
+      <div style={{ display: "inline-block" }}>
+          <div className="profile-icon">
+            <div style={{ display: "inline-flex", float: "right" }}></div>
+            <img src={pic} style={{height:'50px',width:'50px'}}/>
+            <sup>&nbsp;&nbsp;&nbsp;{Cookie.name}</sup>
+          </div>
+      <div>
         {Cookie.Status && (
           <div className="AddAProject">
+            <div className="AddProjTitle">
+              <h3 style={{ paddingTop: "15px" }}>Add Project</h3>
+            </div>
 
-              <div className="AddProjTitle">
-                <h3 style={{paddingTop:'15px'}}>Add Project</h3>
-              </div>
-              
-              <div style={{backgroundColor:'rgb(192, 215, 235)'}}>
+            <div className="addProject">
               <TextField
                 fullWidth
                 id="outlined-basic"
                 label="Project Topic"
                 variant="outlined"
-                style={{padding:'10px'}}
+                style={{ padding: "10px" }}
                 value={Topic}
                 onChange={(e) => setTopic(e.target.value)}
               />
-           
+
               <TextField
                 fullWidth
-                style={{padding:'10px'}}
+                style={{ padding: "10px" }}
                 id="outlined-multiline-static"
                 label="Discription"
                 multiline
@@ -166,6 +194,7 @@ const ProjectForum = () => {
             </div>
           </div>
         )}
+      </div>
       </div>
     </div>
   );

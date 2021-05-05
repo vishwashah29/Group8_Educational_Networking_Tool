@@ -89,7 +89,7 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
     <>
       <div className="projectbx">
         <div className="DiscussionHeader">
-          <div >
+          <div>
             {/* <div
               className="profilepic projhd"
               style={{
@@ -98,14 +98,14 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
                 width: "45px",
               }}
             ></div> */}
-            
+
             <h1 className="projhd" style={{ fontSize: "2vw" }}>
               {Discuss.Que}
             </h1>
           </div>
 
           <div className="Profile">
-          <div style={{paddingRight:'10px'}}>
+            <div style={{ paddingRight: "10px" }}>
               <img
                 className="DiscussIMG"
                 src={background1}
@@ -115,9 +115,11 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
 
             <h3 style={{ fontSize: "15px" }}>
               {Discuss.Author}{" "}
-              <h5 style={{ fontSize: "10px", color: "gray" }}> {Discuss.status?"Professor":"Student"}</h5>
+              <h5 style={{ fontSize: "10px", color: "gray" }}>
+                {" "}
+                {Discuss.status ? "Professor" : "Student"}
+              </h5>
             </h3>
-            
           </div>
         </div>
 
