@@ -32,6 +32,7 @@ const DiscussionForam = ({ ques }) => {
       Topic: "none",
     },
   ]);
+  const [Dis_Original, setDis_Original] = useState([]);
 
   const AddaQues = ({ Ques, Topic }) => {
     const id = Discussions.length + 1; // to be added Dicussion id unique
@@ -94,6 +95,7 @@ const DiscussionForam = ({ ques }) => {
 
         console.log(res);
         setDiscussions(res.data);
+        setDis_Original(res.data);
         console.log(Discussions);
       })
       .catch((err) => {
@@ -138,6 +140,21 @@ const DiscussionForam = ({ ques }) => {
       });
     setAns([...Answers, Ans]);
   };
+  const [flt, setFlt] = useState('');
+  const filter_search = (fltt) => {
+    
+    if(fltt==='') 
+    {
+      setDiscussions(Dis_Original); // dis_org ,Discussion
+      return;
+    }
+    // console.log("fliter",fltt);
+    const temp = Dis_Original.filter((i) => i.Topic === fltt || i.Author === fltt);
+    setDiscussions(temp);
+    // console.log("filter kare",temp);
+    // console.log("filter kare",Discussions);
+    
+  };
 
   useEffect(() => {
     console.log({ Answers });
@@ -147,6 +164,13 @@ const DiscussionForam = ({ ques }) => {
     <div className="discussion-box">
       <div className="question-container">
         <div>
+        <input type="text"
+          value={flt}
+          onChange={(e)=>setFlt(e.target.value)}
+          >
+          
+          </input>
+          <button onClick={()=>filter_search(flt)}>sub</button>
           {Discussions.map((Discuss) => (
             <>
               <div className="discussionBox">
