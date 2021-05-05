@@ -3,7 +3,10 @@ import Singleq from "./Discuss";
 import AskQues from "./AskQues";
 import { Cookies } from "react-cookie";
 import axios from "axios";
-
+import pic from "./Images/profilepic.png";
+import SearchIcon from "@material-ui/icons/Search";
+import TextField from "@material-ui/core/TextField";
+import IconButton from "@material-ui/core/IconButton";
 require("dotenv").config();
 
 const DiscussionForam = ({ ques }) => {
@@ -28,7 +31,7 @@ const DiscussionForam = ({ ques }) => {
       Ques: "What is Software Enggineering ",
       Author: "saurabh Tiwari",
       status: "prof",
-      Cnt:2,
+      Cnt: 2,
       Topic: "none",
     },
   ]);
@@ -45,13 +48,14 @@ const DiscussionForam = ({ ques }) => {
       Topic: Topic,
       Title: "jovu jose aa su kam rakhyu tu",
       status: status,
-      Cnt:0,
+      Cnt: 0,
     };
 
     axios
       .post(`${URL}/AddQuestion`, nwQues)
       .then((res) => {
         console.log("answer added successful");
+        alert("successfully added Question");
       })
       .catch((err) => {
         console.log(err);
@@ -59,7 +63,7 @@ const DiscussionForam = ({ ques }) => {
         return;
       });
 
-    setDiscussions([ nwQues,...Discussions]);
+    setDiscussions([nwQues, ...Discussions]);
     console.log("ques: " + Discussions);
     console.log(nwQues);
   };
@@ -100,7 +104,7 @@ const DiscussionForam = ({ ques }) => {
       })
       .catch((err) => {
         console.log(err);
-        alert("Some err in loading projects");
+        alert("Some err in loading Questions");
         return;
       });
 
@@ -109,11 +113,12 @@ const DiscussionForam = ({ ques }) => {
       .then((res) => {
         // res will be json of name ,email,status
         //console.log("yes in disscussion answer forum");
+
         setAns(res.data);
       })
       .catch((err) => {
         console.log(err);
-        alert("Some err in loading projects");
+        alert("Some err in loading Answers");
         return;
       });
   }, []);
@@ -132,6 +137,7 @@ const DiscussionForam = ({ ques }) => {
       .post(`${URL}/AddAnswer`, Ans)
       .then((res) => {
         console.log("answer added successful");
+        alert("successfully added Answer");
       })
       .catch((err) => {
         console.log(err);
@@ -140,20 +146,19 @@ const DiscussionForam = ({ ques }) => {
       });
     setAns([...Answers, Ans]);
   };
-  const [flt, setFlt] = useState('');
+  const [flt, setFlt] = useState("");
   const filter_search = (fltt) => {
-    
-    if(fltt==='') 
-    {
+    if (fltt === "") {
       setDiscussions(Dis_Original); // dis_org ,Discussion
       return;
     }
     // console.log("fliter",fltt);
-    const temp = Dis_Original.filter((i) => i.Topic === fltt || i.Author === fltt);
+    const temp = Dis_Original.filter(
+      (i) => i.Topic === fltt || i.Author === fltt
+    );
     setDiscussions(temp);
     // console.log("filter kare",temp);
     // console.log("filter kare",Discussions);
-    
   };
 
   useEffect(() => {
@@ -164,13 +169,24 @@ const DiscussionForam = ({ ques }) => {
     <div className="discussion-box">
       <div className="question-container">
         <div>
-        <input type="text"
-          value={flt}
-          onChange={(e)=>setFlt(e.target.value)}
-          >
-          
-          </input>
-          <button onClick={()=>filter_search(flt)}>sub</button>
+          <div>
+            <TextField
+              style={{ width: "93%" }}
+              id="outlined-search"
+              label="Search"
+              type="search"
+              //  variant="outlined"
+              value={flt}
+              onChange={(e) => setFlt(e.target.value)}
+            ></TextField>
+            <IconButton
+              aria-label="Thumbsup"
+              color="primary"
+              onClick={() => filter_search(flt)}
+            >
+              <SearchIcon />
+            </IconButton>
+          </div>
           {Discussions.map((Discuss) => (
             <>
               <div className="discussionBox">
@@ -185,8 +201,15 @@ const DiscussionForam = ({ ques }) => {
             </>
           ))}
         </div>
-        <div className="AskQueBox">
-          <AskQues addQue={AddaQues} />
+        <div style={{ display: "inline-block" }}>
+          <div className="profile-icon">
+            <div style={{ display: "inline-flex", float: "right" }}></div>
+            <img src={pic} style={{height:'50px',width:'50px'}}/>
+            <sup>&nbsp;&nbsp;&nbsp;{Cookie.name}</sup>
+          </div>
+          <div className="AskQueBox">
+            <AskQues addQue={AddaQues} />
+          </div>
         </div>
       </div>
     </div>

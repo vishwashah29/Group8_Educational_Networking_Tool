@@ -14,15 +14,25 @@ import ProjectForum from "./ProjectForum";
 import { FaThermometerEmpty } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import EditDetailsForm from "./EditDetailsForm";
+import Button from "@material-ui/core/Button";
+import { FaTimes } from "react-icons/fa";
+import { Cookies } from "react-cookie";
+import TextField from "@material-ui/core/TextField";
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
+
+
 const App = () => {
+  const cookies = new Cookies();
+  const Cookie = cookies.get("userCookie");
   //Default Person
   const defalut_Person = {
-    fullName: "Johny Dep",
+    fullName: Cookie.name,
     instituteName: "DAIICT",
     batchStart: 2018,
     batchEnd: 2022,
     rollNum: 201801123,
-    email: "Johny@gmail.com",
+    email: Cookie.email,
     profileIcon: "logo",
     interests: ["Maths", "Physics"],
     accomp: ["Olympiad", "design"],
@@ -51,6 +61,7 @@ const App = () => {
   const skill_temp = useRef("");
   const [question, setQuestion] = useState("");
   const [editDetails, setEditDetails] = useState(false);
+  const [skill, setSkill] = useState("");
 
   // REMOVE SKILL
   const removeSkill = (e) => {
@@ -100,63 +111,86 @@ const App = () => {
     if (str === "INT") {
       return (
         <>
+        <div className="inrO">
           <div className="int">
             {interests.map((i) => {
               return (
-                <div>
+                <div className="interest">
                   {" "}
                   {i}{" "}
                   <button
                     name={interests}
                     value={i}
+                    className="removeButton"
                     onClick={(e) => removeInt(e)}
                   >
-                    Remove
+                    X
                   </button>
                 </div>
               );
             })}
           </div>
-          <div className="add-btn-wrapper">
+          <div >
             {isAdding ? <Selecter className="add-topic-selector" /> : ""}
-            <button
+            <Button
               className="add-item"
               name={interests}
               onClick={(e) => setIsAdding(!isAdding)}
             >
-              +&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-              {isAdding ? "Completed!!" : "Add Interest"}
-            </button>
+              {isAdding ? <CheckCircleRoundedIcon/> : <AddCircleIcon/>}
+            </Button>
+          </div>
           </div>
         </>
       );
     }
     if (str === "SKILL") {
       return (
-        <div className="skill">
+        <div
+          className="skill1"
+          style={{ backgroundColor: "rgb(163, 219, 235)" }}
+        >
           {accomp.map((i) => {
             return (
-              <div>
+              <div className="skills">
                 {" "}
                 {i}&nbsp;&nbsp;&nbsp;&nbsp;
-                <button name={accomp} value={i} onClick={(e) => removeSkill(e)}>
-                  Remove
+                <button
+                  className="removeButton"
+                  name={accomp}
+                  value={i}
+                  onClick={(e) => removeSkill(e)}
+                >
+                  X
                 </button>
               </div>
             );
           })}
-          {isAdding ? <input type="text" ref={skill_temp} /> : ""}
-          <button
+          <div className='addskill'>
+          {/* {isAdding ? <input type="text" ref={skill_temp} placeholder="Add Skill"/> : ""} */}
+          {isAdding ? 
+          <TextField
+              style={{ width: "93%" }}
+              id="outlined-search"
+              label="Add Skill"
+              type="text"
+              // variant="outlined"
+              inputRef={skill_temp}
+            ></TextField>: ""}
+          
+          </div>
+          
+          <Button
             className="add-item"
             name={accomp}
             onClick={(e) => {
               if (isAdding) addSkill();
               setIsAdding(!isAdding);
+      
             }}
           >
-            +&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-            {isAdding ? "Completed!!" : "Add Achievements"}
-          </button>
+            {isAdding ? <CheckCircleRoundedIcon/> : <AddCircleIcon/>}
+          </Button>
         </div>
       );
     }
@@ -170,15 +204,15 @@ const App = () => {
         <div className="itm">{fullName}</div>
         <div className="itm">{isStudent ? "Student" : "Professor"}</div>
         <div className="btn-wrapper">
-          <button onClick={() => setStr("DETAILS")} className="btn1 btn-j">
+          <Button onClick={() => setStr("DETAILS")} className="btn1 btn-j">
             Details
-          </button>
-          <button onClick={() => setStr("INT")} className="btn2 btn-j">
+          </Button>
+          <Button onClick={() => setStr("INT")} className="btn2 btn-j">
             Interests
-          </button>
-          <button onClick={() => setStr("SKILL")} className="btn3 btn-j">
+          </Button>
+          <Button onClick={() => setStr("SKILL")} className="btn3 btn-j">
             Skills and Accomplishments
-          </button>
+          </Button>
         </div>
         <Printer str={str} />
       </div>
@@ -209,7 +243,10 @@ const App = () => {
   //ADD SKILL
 
   const addSkill = () => {
+    
     const temp = [...accomp, skill_temp.current.value];
+    
+    
     setPerson({
       ...person,
       accomp: temp,
@@ -241,34 +278,32 @@ const App = () => {
   // MAIN JSX
   return (
     <div id="container">
-      <img src={logo} alt="logo" className="logo" />
-      <input type="text" className="search" placeholder="Search"></input>
-      {/*Can set image of profile"*/}
-      <div className="profile-icon">
-        <img src={pic} />
-        <sup>&nbsp;&nbsp;&nbsp;{fullName}</sup>
-      </div>
+      <div style={{ maxHeight: "300px" }}>
+        <img src={logo} alt="logo" className="logo" />
+        {/* <input type="text" className="search" placeholder="Search"></input> */}
+        {/*Can set image of profile"*/}
 
-      <nav className="nav-bar">
-        <button onClick={() => setPage("PROFILE")}>
-          <div>
-            <PeopleIcon></PeopleIcon>
-            <sup>&nbsp;&nbsp;&nbsp;Profile</sup>
-          </div>
-        </button>
-        <button onClick={() => setPage("PROJECT")}>
-          <div>
-            <SchoolOutlinedIcon></SchoolOutlinedIcon>
-            <sup>&nbsp;&nbsp;&nbsp;Projects</sup>
-          </div>
-        </button>
-        <button onClick={() => setPage("DISCUSSION")}>
-          <div>
-            <PublicSharpIcon></PublicSharpIcon>
-            <sup>&nbsp;&nbsp;&nbsp;Discussion Forum</sup>
-          </div>
-        </button>
-      </nav>
+        <nav className="nav-bar">
+          <button onClick={() => setPage("PROFILE")}>
+            <div>
+              <PeopleIcon></PeopleIcon>
+              <sup>&nbsp;&nbsp;&nbsp;Profile</sup>
+            </div>
+          </button>
+          <button onClick={() => setPage("PROJECT")}>
+            <div>
+              <SchoolOutlinedIcon></SchoolOutlinedIcon>
+              <sup>&nbsp;&nbsp;&nbsp;Projects</sup>
+            </div>
+          </button>
+          <button onClick={() => setPage("DISCUSSION")}>
+            <div>
+              <PublicSharpIcon></PublicSharpIcon>
+              <sup>&nbsp;&nbsp;&nbsp;Discussion Forum</sup>
+            </div>
+          </button>
+        </nav>
+      </div>
 
       {page === "PROFILE" ? (
         <ProfilePrinter />

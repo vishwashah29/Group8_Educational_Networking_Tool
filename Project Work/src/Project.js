@@ -31,7 +31,7 @@ const Project = ({ Project }) => {
         </div>
         <div>
           <div style={{ display: "inline-flex" }}>
-            <h2 className="projhd">{Project.Title}Hiii</h2>
+            <h2 className="projhd">{Project.Title}</h2>
 
             <Button className="ApplyBtn">
               Apply
