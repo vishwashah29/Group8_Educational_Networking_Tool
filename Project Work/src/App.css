@@ -73,6 +73,7 @@
 
 
 .profile-icon{
+  width: 30%;
   display: inline;
   text-align: right;
   align-self: flex-start;

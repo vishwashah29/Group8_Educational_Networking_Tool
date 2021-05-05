@@ -1,25 +1,18 @@
 import background1 from "../Images/logo.png";
-
+import './../index.css';
 const Synergy = () => {
     return (
         <div>
-        <center>
-            <div className='syn'
-              style={{ 
-                backgroundImage: `url(${background1})` ,
-                 height :'200px',
-                 width : '300px',
-        
-                }}>
-            </div>
-            </center>
-
+               <div >
+                    <img  src={background1} alt='Logo of website'/>
+                </div>
+            
             <div>
-
-             <center> <h1 className='textcls'>Welcome to the community </h1>
-                <h1 className='textcls'></h1></center>
+              <h1 className='textcls'>Welcome to </h1>
+                <h1 className='textcls'>the community</h1>
                 
             </div>
+
         </div>
     );
     

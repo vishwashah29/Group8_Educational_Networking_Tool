@@ -1,67 +1,148 @@
+import React from "react";
+import { useState } from "react";
+import GLogin from "./Via_GoogleLogin";
+import { useHistory } from "react-router-dom";
 
-import React from 'react'
-import {useState} from 'react'
-import GLogin from './Via_GoogleLogin';
-import {useHistory} from 'react-router-dom'
+import { Cookies, useCookies } from "react-cookie";
+import axios from "axios";
 
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
 
-const Login = ({onlog}) => {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: 200,
+    },
+  },
+}));
 
-    const history=useHistory();
-    
-    
-    const [email,setemail] = useState ('')
-    const [password,setpassword] = useState ('')
-    
-    
-    const onsub = (e) => {
-        e.preventDefault()
-        
-        console.log("ha login ma"); // from here onwards we have to check id passwords that will be handled in backend
-        // onlog();
+require("dotenv").config();
+const Login = ({ onlog }) => {
+  const classes = useStyles();
+  const history = useHistory();
+  const [cookie, setCookie] = useCookies(["userCookie"]);
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [Val, setVal] = useState(false);
+  const [Val1, setVal1] = useState(false);
+  
 
+  const onsub = (e) => {
+    e.preventDefault();
 
+    console.log("ha login ma", email); // from here onwards we have to check id passwords that will be handled in backend
+    // onlog();
 
-        // after successuful log in lead to main page 
-        history.push("/main")
+    let credi = {
+      email: email,
+      password: password,
+    };
+    // email ane password check kari ne jo valid hoy to response ma name,email,status
+    const URL = process.env.REACT_APP_BACKEND_URL;
 
-    }
-    return (
-        <div className='container'>
-             <form onSubmit={onsub} className='add-form'>
-                 <div className='Login-title'>
-                   <center>  <strong>Login</strong> </center>
-                    <center> <GLogin /> </center>
-                 </div>
-            
+    axios
+      .post(`${URL}/api/login`, credi) // here url to be added
+      .then((res) => {
+        console.log(res);
+        let cookie = {
+          name: res.data.name,
+          Status: res.data.Status,
+          email: res.data.email,
+        };
 
-            <h4 style={{textAlign:'center'}}>-OR-</h4>
-            <div className='form-control' >
-                {/* <label >Email-id</label>  */}
-                <input className='text-box'
-                type='email' placeholder='Email' 
-                value = {email} onChange={ (e) => setemail(e.target.value)}
-                />
+        if (res.data.status == "e1") {
+          
+          setemail("");
+          setpassword("");
 
-            </div>
-            <div className='form-control'>
-                {/* <label>password </label>  */}
-                <input className='text-box'
-                type='password' placeholder=' password ' 
-                value = {password} onChange={ (e) => setpassword(e.target.value)}
-                />
+          setVal1(true);
+          return;
+        }
+        if (res.data.status == "error") {
+          
+          setpassword("");
+          setVal(true);
+          return;
+        }
 
-            </div>
-           
-            <input type='submit' value='Login' className='btn btn-block' />
-            
-        </form>
-       <center> <h3>Don't have account yet?</h3> </center>
-        <button onClick={()=>history.push("/signup") } className='btn-ot'> Create an account</button>
-        
+        setCookie("userCookie", cookie); // aaya response ma Status jose regisetr vali cookie type no response hovo joi
+        // console.log(cookie);
+        history.push("/main");
+      })
+      .catch((err) => {
+        console.log(err);
+        return;
+      
+      });
 
+    // after successuful log in lead to main page
+    // backend nu thy pachhi aa  history push kadhi nakhvu
+    // history.push("/main");
+  };
+  return (
+    <div className="container">
+      <form onSubmit={onsub} className="add-form">
+        <div className="Login-title">
+          <strong>Login</strong>
+          <GLogin />
         </div>
-    )
-}
+
+        <h4 style={{ textAlign: "center" }}>-OR-</h4>
+        <div className="form-control">
+          {/* <label >Email-id</label>  */}
+          {/* <input
+            className="text-box"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setemail(e.target.value)}
+          /> */}
+          <TextField
+            fullWidth
+            required
+            id="standard-error-helper-text"
+            label="Email"
+            error={Val1}
+            value={email}
+            variant="outlined"
+            helperText={Val1 && 'Invalid Email'}
+            onChange={(e) => setemail(e.target.value)}
+          />
+        </div>
+        <div className="form-control">
+          {/* <label>password </label>  */}
+          {/* <input
+            className="text-box"
+            type="password"
+            placeholder=" password "
+            value={password}
+            onChange={(e) => setpassword(e.target.value)}
+          /> */}
+          <TextField
+            fullWidth
+            required
+            error={Val}
+            id="standard-error-helper-text"
+            label="Password"
+            type="password"
+            variant="outlined"
+            helperText={Val && 'Invalid Password'}
+            value={password}
+            onChange={(e) => setpassword(e.target.value)}
+          />
+        </div>
+
+        <input type="submit" value="Login" className="btn btn-block" />
+      </form>
+      <h3>Don't have account yet?</h3>
+      <button data-testid="create-new-acc" onClick={() => history.push("/signup")} className="btn-ot">
+        {" "}
+        Create an account
+      </button>
+    </div>
+  );
+};
 
 export default Login;

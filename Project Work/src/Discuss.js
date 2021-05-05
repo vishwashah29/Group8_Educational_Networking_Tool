@@ -12,8 +12,9 @@ import IconButton from "@material-ui/core/IconButton";
 import { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 
-import background1 from "./Images/logo.png";
+import background1 from "./Images/profilepic.png";
 import { Cookies, useCookies } from "react-cookie";
+import Project from "./Project";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,13 +33,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Discuss = ({ Discuss, givAnswers, AddAns }) => {
-  const [Th, setTh] = useState(false);
-  const [Thd, setThd] = useState(false);
+  const [Th, setTh] = useState(true);
+  const [Thd, setThd] = useState(true);
   const [Ans, setAns] = useState([]);
   const [rdMor, setRdmr] = useState(true);
   const [yrAns, setYrans] = useState("");
-  const [likeCnt, setCnt] = useState(false);
-  const [dislikeCnt, setCnt1] = useState(false);
+  const [cnt, setCnt] = useState(0);
+  const [mx, setMx] = useState(0);
 
   const cookies = new Cookies();
   const Cookie = cookies.get("userCookie");
@@ -47,15 +48,26 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
 
   const ans = (id) => {
     let curAns = givAnswers(id);
+    console.log("ans for id:", id, " ans ", curAns);
     setAns(curAns);
   };
   const onAdd = () => {
     let id = Discuss.id,
       Author = Cookie.name;
-    AddAns({ id: id, Author: Author, status: Cookie.Status, comment: yrAns });
-    let cur = { id: id, Author: Author, status: Cookie.Status, comment: yrAns };
+    AddAns({ id: id, Author: Author, status: Cookie.Status, Comment: yrAns });
+    let cur = { id: id, Author: Author, status: Cookie.Status, Comment: yrAns };
     if (Cookie.Status) setAns([cur, ...Ans]);
     else setAns([...Ans, cur]);
+  };
+  const inc = () => {
+    setTh(false);
+    setThd(true);
+    setMx(1);
+  };
+  const dcr = () => {
+    setTh(true);
+    setThd(false);
+    setMx(-1);
   };
 
   const Printer = () => {
@@ -65,78 +77,71 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
           return (
             <div className={`AnsCmt ${i.status ? "special" : "normal"}`}>
               <h4>{i.Author}</h4>
-              <p style={{ fontSize: "15px" }}>{i.comment}</p>
+              <p style={{ fontSize: "15px" }}>{i.Comment}</p>
             </div>
           );
         })}
       </>
     );
   };
-  // const Lkcnt = () =>
-  // {
-  //     return (
-  //         <>
-  //             {likeCnt && set}
-  //         </>
-  //     )
-  // }
 
   return (
     <>
-      {/* <div className="projectbx"> */}
-
-        <div className="inline-flex-proj">
-
-        <div className="card" style={{ overflow: "hidden" }}>
-
-          <image className="profilepic"
-            style={{
-              backgroundImage: `url(${background1})`,
-              height: "200px",
-              width: "150px",
-              float: "left",
-            }}></image>
-          <div className="container1">
-
-            <h5 className="Author">
-              {Discuss.Author}
-              <p style={{ fontSize: "15px" }}>{Discuss.status}</p>
-            </h5>
-            <h1 >
-              {Discuss.Ques}
+      <div className="projectbx">
+        <div className="DiscussionHeader">
+          <div >
+            {/* <div
+              className="profilepic projhd"
+              style={{
+                backgroundImage: `url(${background1})`,
+                height: "50px",
+                width: "45px",
+              }}
+            ></div> */}
+            
+            <h1 className="projhd" style={{ fontSize: "2vw" }}>
+              {Discuss.Que}
             </h1>
+          </div>
+
+          <div className="Profile">
+          <div style={{paddingRight:'10px'}}>
+              <img
+                className="DiscussIMG"
+                src={background1}
+                alt="Logo of website"
+              />
+            </div>
+
+            <h3 style={{ fontSize: "15px" }}>
+              {Discuss.Author}{" "}
+              <h5 style={{ fontSize: "10px", color: "gray" }}> {Discuss.status?"Professor":"Student"}</h5>
+            </h3>
+            
           </div>
         </div>
 
-
-      </div>
-
-      <div>
-        <div className="card" style={{ backgroundColor: "whitesmoke", height: "150px" }}>
-
-          <h4>
-            <IconButton
-              aria-label="Thumbsup"
-              color="primary"
-              onClick={() => setTh(!Th)}
-            >
+        <div className="LikeDislikeBox">
+          <div style={{ display: "inline-flex" }}>
+            <IconButton aria-label="Thumbsup" color="primary" onClick={inc}>
               {Th && <Thup />}
               {!Th && <Thup1 />}
             </IconButton>
-            <Button
-              size="small"
-              className={classes.margin}
-              onClick={() => setThd(!Thd)}
-            >
+            <div className="LikeDislikeCnt">
+              <p>{cnt + mx}</p>
+            </div>
+            <Button size="small" className={classes.margin} onClick={dcr}>
               {Thd && <Thdn />}
               {!Thd && <Thdn1 />}
             </Button>
             <Button size="small" className={classes.margin}>
               <Shr />
             </Button>
-          </h4>
-
-        <hr></hr>
+            <div className="Topictag">
+              <p>{Discuss.Topic}</p>
+            </div>
+          </div>
+        </div>
 
         <Printer />
         <div>
@@ -153,7 +158,7 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
             {rdMor ? "read more" : "read less"}
           </Button>
         </div>
-        <div className="" style={{ padding: "10px" }}>
+        <div className="">
           <TextField
             id="standard-textarea"
             label="Your Answer"
@@ -172,10 +177,7 @@ const Discuss = ({ Discuss, givAnswers, AddAns }) => {
             <Send fontSize="small" />
           </IconButton>
         </div>
-        </div>
-
       </div>
-      {/* </div> */}
     </>
   );
 };

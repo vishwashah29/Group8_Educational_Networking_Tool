@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import PublicSharpIcon from "@material-ui/icons/PublicSharp";
 import SchoolOutlinedIcon from "@material-ui/icons/SchoolOutlined";
 import logo from "./Images/logo.png";
+import pic from "./Images/profilepic.png";
 import "./App.css";
 import PeopleIcon from "@material-ui/icons/People";
 import { DropdownButton } from "react-bootstrap";
@@ -42,7 +43,7 @@ const App = () => {
     isStudent,
   } = person;
   const images = require.context("./Images/", true);
-  let pic = images(`./${profileIcon}.png`).default;
+  /*let pic = images(`./${profileIcon}.png`).default;*/
   const [str, setStr] = useState("DETAILS");
   const [selectedTopic, setTopic] = useState("");
   const [page, setPage] = useState("PROFILE");
