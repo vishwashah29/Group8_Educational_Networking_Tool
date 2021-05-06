@@ -20,7 +20,7 @@ export const Contacts=[
     {
         person: "MADHAV",
         title: "UI/UX DESIGNER",
-        email: "madhav@ednet.com",
-        phone: 9897987799
+        email: "ved@ednet.com",
+        phone: 9897987736
     }
 ]
