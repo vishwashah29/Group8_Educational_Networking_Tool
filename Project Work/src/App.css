@@ -204,3 +204,9 @@
   border-radius: 20px;
   background-color: rgb(163, 219, 235);
 }
+
+@media (max-width: 650px){
+  .logo{
+    width: 100%;
+  }
+}

@@ -26,7 +26,6 @@ const EditDetailsForm=({person, setPerson,page,setPage})=>{
 
         
     }
-
     return(
         <div>
             <form  onSubmit={()=>handleEdit()}>

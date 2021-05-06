@@ -21,7 +21,6 @@ import TextField from "@material-ui/core/TextField";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
 
-
 const App = () => {
   const cookies = new Cookies();
   const Cookie = cookies.get("userCookie");
@@ -85,19 +84,16 @@ const App = () => {
   const Printer = ({ str }) => {
     if (str === "DETAILS") {
       return (
-        <div className="details">
+        <div className="container-fluid details">
           <div>Full Name: {fullName}</div>
-
           <div>Institute Name: {instituteName}</div>
-
           <div>
             Btech: {batchStart} - {batchEnd}
           </div>
-
           <div>Enrollment Number: {rollNum}</div>
-
           <div>Email : {email}</div>
           <button
+            type="button" class="btn btn-block btn-light"
             onClick={() => {
               setPage("EDITDETAILS");
             }}
@@ -111,35 +107,35 @@ const App = () => {
     if (str === "INT") {
       return (
         <>
-        <div className="inrO">
-          <div className="int">
-            {interests.map((i) => {
-              return (
-                <div className="interest">
-                  {" "}
-                  {i}{" "}
-                  <button
-                    name={interests}
-                    value={i}
-                    className="removeButton"
-                    onClick={(e) => removeInt(e)}
-                  >
-                    X
+          <div className="inrO">
+            <div className="int">
+              {interests.map((i) => {
+                return (
+                  <div className="interest">
+                    {" "}
+                    {i}{" "}
+                    <button
+                      name={interests}
+                      value={i}
+                      className="removeButton"
+                      onClick={(e) => removeInt(e)}
+                    >
+                      X
                   </button>
-                </div>
-              );
-            })}
-          </div>
-          <div >
-            {isAdding ? <Selecter className="add-topic-selector" /> : ""}
-            <Button
-              className="add-item"
-              name={interests}
-              onClick={(e) => setIsAdding(!isAdding)}
-            >
-              {isAdding ? <CheckCircleRoundedIcon/> : <AddCircleIcon/>}
-            </Button>
-          </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div >
+              {isAdding ? <Selecter className="add-topic-selector" /> : ""}
+              <Button
+                className="add-item"
+                name={interests}
+                onClick={(e) => setIsAdding(!isAdding)}
+              >
+                {isAdding ? <CheckCircleRoundedIcon /> : <AddCircleIcon />}
+              </Button>
+            </div>
           </div>
         </>
       );
@@ -147,7 +143,7 @@ const App = () => {
     if (str === "SKILL") {
       return (
         <div
-          className="skill1"
+          className="container-fluid skill1"
           style={{ backgroundColor: "rgb(163, 219, 235)" }}
         >
           {accomp.map((i) => {
@@ -167,29 +163,29 @@ const App = () => {
             );
           })}
           <div className='addskill'>
-          {/* {isAdding ? <input type="text" ref={skill_temp} placeholder="Add Skill"/> : ""} */}
-          {isAdding ? 
-          <TextField
-              style={{ width: "93%" }}
-              id="outlined-search"
-              label="Add Skill"
-              type="text"
-              // variant="outlined"
-              inputRef={skill_temp}
-            ></TextField>: ""}
-          
+            {/* {isAdding ? <input type="text" ref={skill_temp} placeholder="Add Skill"/> : ""} */}
+            {isAdding ?
+              <TextField
+                style={{ width: "93%" }}
+                id="outlined-search"
+                label="Add Skill"
+                type="text"
+                // variant="outlined"
+                inputRef={skill_temp}
+              ></TextField> : ""}
+
           </div>
-          
+
           <Button
             className="add-item"
             name={accomp}
             onClick={(e) => {
               if (isAdding) addSkill();
               setIsAdding(!isAdding);
-      
+
             }}
           >
-            {isAdding ? <CheckCircleRoundedIcon/> : <AddCircleIcon/>}
+            {isAdding ? <CheckCircleRoundedIcon /> : <AddCircleIcon />}
           </Button>
         </div>
       );
@@ -204,13 +200,13 @@ const App = () => {
         <div className="itm">{fullName}</div>
         <div className="itm">{isStudent ? "Student" : "Professor"}</div>
         <div className="btn-wrapper">
-          <Button onClick={() => setStr("DETAILS")} className="btn1 btn-j">
+          <Button type="button" class="btn  btn-light" onClick={() => setStr("DETAILS")} className="btn1 btn-j">
             Details
           </Button>
-          <Button onClick={() => setStr("INT")} className="btn2 btn-j">
+          <Button type="button" class="btn  btn-light" onClick={() => setStr("INT")} className="btn2 btn-j">
             Interests
           </Button>
-          <Button onClick={() => setStr("SKILL")} className="btn3 btn-j">
+          <Button type="button" class="btn  btn-light" onClick={() => setStr("SKILL")} className="btn3 btn-j">
             Skills and Accomplishments
           </Button>
         </div>
@@ -243,17 +239,13 @@ const App = () => {
   //ADD SKILL
 
   const addSkill = () => {
-    
     const temp = [...accomp, skill_temp.current.value];
-    
-    
     setPerson({
       ...person,
       accomp: temp,
     });
   };
 
-  // PROVIDE TOPIC MENU
   const Selecter = () => {
     return (
       <>
@@ -274,15 +266,12 @@ const App = () => {
     setPage(x);
   };
 
-  console.log(page);
-  // MAIN JSX
   return (
-    <div id="container">
-      <div style={{ maxHeight: "300px" }}>
+    <div className = "container-fluid" id="container">
+      <div className = "container-fluid" style={{ maxHeight: "300px" }}>
         <img src={logo} alt="logo" className="logo" />
         {/* <input type="text" className="search" placeholder="Search"></input> */}
         {/*Can set image of profile"*/}
-
         <nav className="nav-bar">
           <button onClick={() => setPage("PROFILE")}>
             <div>
