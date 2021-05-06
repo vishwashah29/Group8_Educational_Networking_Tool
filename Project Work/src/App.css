@@ -11,7 +11,7 @@
   float: left;
 }
 
-.btn-signout{
+.btn-signout {
   text-align: center;
   margin: 30px;
   grid-column-start: 1;
@@ -131,7 +131,7 @@
   border-color: white white grey white;
   height: 90px;
 }
-.btn-wrapper Button:afterClick {
+.btn-wrapper Button:afterclick {
   border-bottom: 2px solid black;
 }
 
