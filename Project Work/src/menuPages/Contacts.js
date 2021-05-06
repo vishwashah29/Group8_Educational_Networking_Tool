@@ -21,6 +21,6 @@ export const Contacts=[
         person: "MADHAV",
         title: "UI/UX DESIGNER",
         email: "madhav@ednet.com",
-        phone: 9897987736
+        phone: 9897987799
     }
 ]
