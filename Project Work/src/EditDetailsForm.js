@@ -18,7 +18,7 @@ const EditDetailsForm=({person, setPerson,page,setPage})=>{
             batchStart: BatchStart,
             batchEnd: BatchEnd,
             rollNum: RollNum,
-            email: Email
+            email: person.email
         }
         setPerson(temp);
 
@@ -47,11 +47,7 @@ const EditDetailsForm=({person, setPerson,page,setPage})=>{
             </div>
 
             <div>Enrollment Number: 
-            <input type=''  onChange={(e)=>setRollNum(e.target.value)} required/>
-            </div>
-
-            <div>Email:
-             <input type='text'   onChange={(e)=>setEmail(e.target.value)} required/>
+            <input type='' onChange={(e)=>setRollNum(e.target.value)} required/>
             </div>
 
             <button type='submit'>Submit</button>
