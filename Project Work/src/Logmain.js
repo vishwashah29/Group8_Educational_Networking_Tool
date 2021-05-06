@@ -40,8 +40,8 @@ const Logmain = ({ flg }) => {
             </div>
 
             <div>
-              <h1 className="textcls">Welcome to </h1>
-              <h1 className="textcls">the community</h1>
+              <h1 className="textcls" style={{fontFamily:'cursive'}}>Welcome to </h1>
+              <h1 className="textcls" style={{fontFamily:'cursive'}}>the community</h1>
             </div>
           </div>
         </div>

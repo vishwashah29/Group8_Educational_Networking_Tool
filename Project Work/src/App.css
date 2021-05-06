@@ -6,9 +6,9 @@
 }
 
 .logo {
-  height: 80%;
+  height: 70%;
   width: 80%;
-  float: left;
+  /* float: left; */
 }
 .skills {
   background-color: rgb(106, 212, 241);

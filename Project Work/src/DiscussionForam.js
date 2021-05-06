@@ -6,12 +6,18 @@ import axios from "axios";
 import pic from "./Images/profilepic.png";
 import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import {useHistory } from "react-router-dom";
 require("dotenv").config();
 
 const DiscussionForam = ({ ques }) => {
   const cookies = new Cookies();
   const Cookie = cookies.get("userCookie");
+  const history = useHistory();
   // const [cookie1, setCookie] = useCookies(["userCookie"]);
   const URL = process.env.REACT_APP_BACKEND_URL;
   // const URL = "http://localhost:9999";
@@ -55,7 +61,8 @@ const DiscussionForam = ({ ques }) => {
       .post(`${URL}/AddQuestion`, nwQues)
       .then((res) => {
         console.log("answer added successful");
-        alert("successfully added Question");
+        toast.success("Que added");
+        // alert("successfully added Question");
       })
       .catch((err) => {
         console.log(err);
@@ -64,8 +71,8 @@ const DiscussionForam = ({ ques }) => {
       });
 
     setDiscussions([nwQues, ...Discussions]);
-    console.log("ques: " + Discussions);
-    console.log(nwQues);
+    // console.log("ques: " + Discussions);
+    // console.log(nwQues);
   };
 
   const [Answers, setAns] = useState([
@@ -104,7 +111,7 @@ const DiscussionForam = ({ ques }) => {
       })
       .catch((err) => {
         console.log(err);
-        alert("Some err in loading Questions");
+        alert("Some error in loading Questions");
         return;
       });
 
@@ -132,12 +139,15 @@ const DiscussionForam = ({ ques }) => {
     return temp;
   };
 
+  const Signout = () =>{
+    history.push("/login");
+  };
   const addAnswer = (Ans) => {
     axios
       .post(`${URL}/AddAnswer`, Ans)
       .then((res) => {
         console.log("answer added successful");
-        alert("successfully added Answer");
+        toast.success("successfully added Answer");
       })
       .catch((err) => {
         console.log(err);
@@ -205,10 +215,12 @@ const DiscussionForam = ({ ques }) => {
           <div className="profile-icon">
             <div style={{ display: "inline-flex", float: "right" }}></div>
             <img src={pic} style={{height:'50px',width:'50px'}}/>
-            <sup>&nbsp;&nbsp;&nbsp;{Cookie.name}</sup>
+            <p>&nbsp;&nbsp;&nbsp;{Cookie.name}</p>
+            <Button onClick={Signout}>Sign Out</Button>
           </div>
           <div className="AskQueBox">
             <AskQues addQue={AddaQues} />
+            <ToastContainer />
           </div>
         </div>
       </div>

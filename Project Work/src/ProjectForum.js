@@ -9,6 +9,9 @@ import axios from "axios";
 import pic from "./Images/profilepic.png";
 import SearchIcon from "@material-ui/icons/Search";
 import IconButton from "@material-ui/core/IconButton";
+import {useHistory } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 require("dotenv").config();
 const useStyles = makeStyles((theme) => ({
@@ -58,6 +61,10 @@ const ProjectForum = () => {
   // back end mathi fetch kari ne show karvana ane pachhi j rite search thay e rite show karvana
   // ena mate serch box ma bhi implement karvanu chhe
 
+  const history = useHistory();
+  const Signout = () =>{
+     history.push("/login");
+   };
   useEffect(() => {
     axios
       .get(`${URL}/GetProject`) // here url to be added
@@ -95,7 +102,7 @@ const ProjectForum = () => {
     const nwP = {
       Title: Topic,
       Description: Disc,
-      Author: "me",
+      Author: Cookie.name,
     };
     console.log(nwP);
     // setProjects([...Projects, nwP]); // aa line jo database ma add thy tyare .then vala ma karvani
@@ -105,7 +112,7 @@ const ProjectForum = () => {
       .post(`${URL}/AddProject`, nwP)
       .then((res) => {
         console.log("successfully added project");
-        alert("successfully added project");
+        toast.success("successfully added project");
         
         console.log("succ", res);
       })
@@ -114,7 +121,8 @@ const ProjectForum = () => {
         alert("there is some err in adding a project");
         return;
       });
-    setProjects([...Projects, nwP]);
+    setProjects([nwP,...Projects]);
+    setProj_Org(Projects);
 
   };
 
@@ -151,6 +159,7 @@ const ProjectForum = () => {
             <div style={{ display: "inline-flex", float: "right" }}></div>
             <img src={pic} style={{height:'50px',width:'50px'}}/>
             <sup>&nbsp;&nbsp;&nbsp;{Cookie.name}</sup>
+            <Button onClick={Signout}>Sign Out</Button>
           </div>
       <div>
         {Cookie.Status && (
@@ -191,6 +200,7 @@ const ProjectForum = () => {
               >
                 Add
               </Button>
+              <ToastContainer/>
             </div>
           </div>
         )}

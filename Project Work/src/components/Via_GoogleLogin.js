@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Cookies, useCookies } from "react-cookie";
 import { useHistory } from "react-router-dom";
+import axios from 'axios';
+
 require("dotenv").config();
 
 const useStyles = makeStyles((theme) => ({
@@ -39,39 +41,45 @@ const Via_GoogleLogin = () => {
     console.log("Success");
     
     
+  
     
     let credi = {
       email: response.profileObj.email,
+      password:"123"
     };
-    // email uper thi j name status ne e badhu mali jase e email thi acc banavelu hovu joi
-    // to aa req thi email uper thi name,email ,status jose response ma
-    // axios
-    //   .post(,credi)     // here url to be added
-    //   .then((res) => {                     // res will be json of name ,email,status 
-    //    setCookie("userCookie", res);
-    //    history.push("/main");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     alert("Please login via email id used for sign up");
-    //     return ;
-    //   });
-
-
-    // back end req nu thya pachhi aa kadhi nakhvanu 
-    let status = true;
+    console.log(credi.email);
     let authCookie = {
       email: response.profileObj.email,
       name: response.profileObj.name,
       GID: response.googleId,
-      Status: status,
+      Status: false,
     };
+    // email ane password check kari ne jo valid hoy to response ma name,email,status
+    const URL = process.env.REACT_APP_BACKEND_URL;
+    console.log(URL);
+    axios
+      .post(`${URL}/api/login`, credi) // here url to be added
+      .then((res) => {
+        console.log(res);
+      
+        if (res.data.status === "e1") {
+          alert("Ivalid Email address")
+          return;
+        }
+        setCookie("userCookie", authCookie); // aaya response ma Status jose regisetr vali cookie type no response hovo joi
+        console.log("yees",cookie);
+        history.push("/main");
+      })
+      .catch((err) => {
+        console.log(err);
+        return;
+      
+      });
 
-    setCookie("userCookie",authCookie);
+    // back end req nu thya pachhi aa kadhi nakhvanu 
+    let status = true;
+   
 
-    setUser(true);
-    setRender(!render);
-    history.push("/main");
   };
   // useEffect(() => {
   //   if (userCookie !== undefined) setUser(true);

@@ -20,7 +20,8 @@ import { Cookies } from "react-cookie";
 import TextField from "@material-ui/core/TextField";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const cookies = new Cookies();
@@ -62,6 +63,7 @@ const App = () => {
   const [question, setQuestion] = useState("");
   const [editDetails, setEditDetails] = useState(false);
   const [skill, setSkill] = useState("");
+
 
   // REMOVE SKILL
   const removeSkill = (e) => {
@@ -278,7 +280,7 @@ const App = () => {
   // MAIN JSX
   return (
     <div id="container">
-      <div style={{ maxHeight: "300px" }}>
+      <div style={{ maxHeight: "225px" }}>
         <img src={logo} alt="logo" className="logo" />
         {/* <input type="text" className="search" placeholder="Search"></input> */}
         {/*Can set image of profile"*/}

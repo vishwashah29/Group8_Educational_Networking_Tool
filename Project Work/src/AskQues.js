@@ -9,7 +9,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,10 +40,13 @@ const AskQues = ({ addQue }) => {
   const classes = useStyles();
   const [Tog, setTog] = useState(false);
   const [Topic, setTopic] = useState("None");
+  const [flg, setFlg] = useState(false);
   const handleChange = (event) => {
     setTopic(event.target.value);
     console.log(Topic);
   };
+
+  const notify = () => toast.success("Your question is added");
 
   return (
     <div>
@@ -98,9 +102,12 @@ const AskQues = ({ addQue }) => {
               className={classes.button}
               endIcon={<Send fontSize="small" />}
               onClick={() => addQue({ Ques, Topic })}
+              
             >
               Ask
             </Button>
+            
+            <ToastContainer />
           </div>
         )}
       </div>

@@ -9,7 +9,12 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+.ProfessorProject {
+  margin-top: 10px;
+  margin-bottom: 10px;
 
+  border-bottom: 2px solid black;
+}
 .AnsCmt {
   border: 1px solid blue;
   border-radius: 20px;
@@ -19,9 +24,14 @@ body {
 .Login-title {
   /* class for login page login title sub se uper vala*/
   font-size: larger;
-  
-  
+
   /* border:1px solid red; */
+}
+.notification-container {
+  font-size: 14px;
+  box-sizing: border-box;
+  position: fixed;
+  border-color: white;
 }
 
 .special {
@@ -38,10 +48,11 @@ body {
   width: 80%;
   min-height: 30px;
 }
-.ForShadow{
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 5px rgba(0, 0, 0, 0.19);
+.ForShadow {
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2),
+    0 6px 20px 5px rgba(0, 0, 0, 0.19);
   margin: 10px;
-  padding:10px;
+  padding: 10px;
 }
 
 .ProjOutBox {
@@ -56,10 +67,9 @@ body {
   grid-column-start: 2;
   grid-column-end: 4;
   /* border-radius: 50px; */
-  
 }
-.LikeDislikeBox{
-  border-bottom:2px solid black ;
+.LikeDislikeBox {
+  border-bottom: 2px solid black;
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
@@ -73,7 +83,8 @@ body {
   /* padding-right: px; */
   border: 1px solid steelblue;
   border-radius: 10px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 5px rgba(0, 0, 0, 0.19);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2),
+    0 6px 20px 5px rgba(0, 0, 0, 0.19);
 }
 .discussionBox1 {
   margin: 30px 10px;
@@ -83,11 +94,12 @@ body {
   /* padding-right: 0px; */
   border: 1px solid steelblue;
   border-radius: 10px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 5px rgba(0, 0, 0, 0.19);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2),
+    0 6px 20px 5px rgba(0, 0, 0, 0.19);
 }
 .AskBox {
   margin: 0px;
-  
+
   max-width: 1000px;
   overflow: auto;
 }
@@ -102,31 +114,28 @@ body {
 
   max-width: 1000px;
   overflow: auto;
- 
+
   padding: 20px;
   /* border: 1px solid steelblue; */
   border-radius: 10px;
   /* box-shadow: 2px 4px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 20px 5px rgba(0, 0, 0, 0.19); */
-  
 }
 .projhd {
   /**/
-  font-family:'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 2rem;
   padding: 10px;
   border-radius: 15px;
-  
 }
 
 .Profile {
   display: inline-flex;
 }
 
-.DiscussIMG{
+.DiscussIMG {
   /*border-radius: 15px;*/
   margin-left: 10px;
   width: 30px;
-
 }
 .ImgProj {
   max-width: 90px;
@@ -154,7 +163,7 @@ body {
 .container {
   max-width: 500px;
   /* margin: 30px auto; */
-  padding:40px;
+  padding: 40px;
   overflow: auto;
   min-height: 300px;
   /* border: 1px solid steelblue; */
@@ -172,7 +181,6 @@ body {
 }
 .AskQueBox {
   width: auto;
-  
 }
 .containerbg {
   /*this class is for back ground image*/
@@ -201,9 +209,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.addProject{
+.addProject {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border:1px solid rgb(198, 194, 194);
+  border: 1px solid rgb(198, 194, 194);
 }
 .AddAProject {
   /*in Project forum add project for profs */
@@ -212,29 +220,39 @@ body {
   align-content: space-between;
   /* border:1px solid black; */
 }
+.ProjectHeader {
+  background-color: #e5f0ff;
+  /* border: 1px solid black; */
+  border-bottom: 2px solid black;
+  margin-bottom: 10px;
+  padding: 20px;
+  margin: -2px;
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+}
 .AddProjTitle {
   /*in Project forum add project for profs  Title "Add New Project"*/
   background-color: antiquewhite;
   font-size: 1rem;
   min-height: 70px;
   text-align: center;
-  border:1px solid rgb(198, 194, 194);
+  border: 1px solid rgb(198, 194, 194);
   margin-top: 10px;
   border-radius: 40px 40px 0px 0px;
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .DiscussionHeader {
-  background-color: #E5F0FF;
+  background-color: #e5f0ff;
   padding: 20px;
   margin-left: -30px;
   margin-right: -30px;
   margin-top: -30px;
 }
-.LikeDislikeCnt{
+.LikeDislikeCnt {
   margin-top: 5%;
 }
-.Topictag{
-  background-color:#9fa19d;
+.Topictag {
+  background-color: #9fa19d;
   border-radius: 20px 20px 20px 20px;
   padding-left: 10%;
   padding-right: 10%;
@@ -252,14 +270,20 @@ body {
   max-height: 400px;
 }
 .ImgLogin {
-  min-height: 400px;
+  /* min-height: 400px;
   min-width: 350px;
   max-height: 4000px;
   max-width: 450px;
-  padding-right: 90px;
+  padding-right: 90px; */
+  margin-left: -90px;
+  margin-right: 60px;
+  margin-top: 70px;
+
+  width: 200%;
+  height: auto;
+  /* padding-right: 90px; */
 }
 .LoginOutBox {
-
   margin-right: 200px;
   padding-right: 50px;
   height: inherit;
@@ -354,7 +378,7 @@ body {
 
 .textcls {
   text-align: center;
-  font-family: Gabria hallelujah;
+  font-family: 'cursive';
   white-space: wrap;
 }
 
