@@ -10,6 +10,13 @@
   width: 80%;
   float: left;
 }
+
+.btn-signout{
+  text-align: center;
+  margin: 30px;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
 .skills {
   background-color: rgb(106, 212, 241);
   border: 1px solid black;
