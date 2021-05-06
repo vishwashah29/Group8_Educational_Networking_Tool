@@ -9,8 +9,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,16 +74,23 @@ const AskQues = ({ addQue }) => {
                   labelId="demo-simple-select-outlined-label"
                   id="demo-simple-select-outlined"
                   value={Topic}
-                  
                   onChange={handleChange}
                   style={{ width: "100%" }}
                   label="Topic"
                 >
+                  <MenuItem value={"General"}>General</MenuItem>
                   <MenuItem value={"DSA"}>DSA</MenuItem>
-                  <MenuItem value={"Development"}>Development</MenuItem>
+                  <MenuItem value={"Web Development"}>Web Development</MenuItem>
                   <MenuItem value={"Academic"}>Academic</MenuItem>
                   <MenuItem value={"Cultural"}>Cultural</MenuItem>
-                  <MenuItem value={"General"}>General</MenuItem>
+                  <MenuItem value={"Micro Controller"}>
+                    Micro Controller
+                  </MenuItem>
+                  <MenuItem value={"Maths"}>Maths</MenuItem>
+                  <MenuItem value={"Physics"}>Physics</MenuItem>
+                  <MenuItem value={"Machine Learning"}>
+                    Machine Learning
+                  </MenuItem>
                 </Select>
               </FormControl>
             </div>
@@ -102,11 +109,10 @@ const AskQues = ({ addQue }) => {
               className={classes.button}
               endIcon={<Send fontSize="small" />}
               onClick={() => addQue({ Ques, Topic })}
-              
             >
               Ask
             </Button>
-            
+
             <ToastContainer />
           </div>
         )}

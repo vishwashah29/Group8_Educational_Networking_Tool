@@ -64,7 +64,6 @@
 //   const [editDetails, setEditDetails] = useState(false);
 //   const [skill, setSkill] = useState("");
 
-
 //   // REMOVE SKILL
 //   const removeSkill = (e) => {
 //     const tempSkill = person.accomp.filter((i) => i !== e.target.value);
@@ -170,7 +169,7 @@
 //           })}
 //           <div className='addskill'>
 //           {/* {isAdding ? <input type="text" ref={skill_temp} placeholder="Add Skill"/> : ""} */}
-//           {isAdding ? 
+//           {isAdding ?
 //           <TextField
 //               style={{ width: "93%" }}
 //               id="outlined-search"
@@ -179,16 +178,16 @@
 //               // variant="outlined"
 //               inputRef={skill_temp}
 //             ></TextField>: ""}
-          
+
 //           </div>
-          
+
 //           <Button
 //             className="add-item"
 //             name={accomp}
 //             onClick={(e) => {
 //               if (isAdding) addSkill();
 //               setIsAdding(!isAdding);
-      
+
 //             }}
 //           >
 //             {isAdding ? <CheckCircleRoundedIcon/> : <AddCircleIcon/>}
@@ -245,10 +244,9 @@
 //   //ADD SKILL
 
 //   const addSkill = () => {
-    
+
 //     const temp = [...accomp, skill_temp.current.value];
-    
-    
+
 //     setPerson({
 //       ...person,
 //       accomp: temp,
@@ -327,7 +325,6 @@
 
 // export default App;
 
-
 import React, { useEffect, useState, useRef } from "react";
 import PublicSharpIcon from "@material-ui/icons/PublicSharp";
 import SchoolOutlinedIcon from "@material-ui/icons/SchoolOutlined";
@@ -346,12 +343,12 @@ import { Link } from "react-router-dom";
 import EditDetailsForm from "./EditDetailsForm";
 import Button from "@material-ui/core/Button";
 import { FaTimes } from "react-icons/fa";
-import { Cookies,useCookies } from "react-cookie";
+import { Cookies, useCookies } from "react-cookie";
 import TextField from "@material-ui/core/TextField";
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import CheckCircleRoundedIcon from "@material-ui/icons/CheckCircleRounded";
 
-import {useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const App = () => {
   const cookies = new Cookies();
@@ -395,7 +392,7 @@ const App = () => {
   const [editDetails, setEditDetails] = useState(false);
   const [skill, setSkill] = useState("");
   const [cookie, setCookie] = useCookies(["userCookie"]);
-  
+
   // REMOVE SKILL
   const removeSkill = (e) => {
     const tempSkill = person.accomp.filter((i) => i !== e.target.value);
@@ -405,7 +402,7 @@ const App = () => {
     });
   };
 
-  const Signout = () =>{
+  const Signout = () => {
     history.push("/login");
   };
 
@@ -448,35 +445,35 @@ const App = () => {
     if (str === "INT") {
       return (
         <>
-        <div className="inrO">
-          <div className="int">
-            {interests.map((i) => {
-              return (
-                <div className="interest">
-                  {" "}
-                  {i}{" "}
-                  <button
-                    name={interests}
-                    value={i}
-                    className="removeButton"
-                    onClick={(e) => removeInt(e)}
-                  >
-                    X
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-          <div >
-            {isAdding ? <Selecter className="add-topic-selector" /> : ""}
-            <Button
-              className="add-item"
-              name={interests}
-              onClick={(e) => setIsAdding(!isAdding)}
-            >
-              {isAdding ? <CheckCircleRoundedIcon/> : <AddCircleIcon/>}
-            </Button>
-          </div>
+          <div className="inrO">
+            <div className="int">
+              {interests.map((i) => {
+                return (
+                  <div className="interest">
+                    {" "}
+                    {i}{" "}
+                    <button
+                      name={interests}
+                      value={i}
+                      className="removeButton"
+                      onClick={(e) => removeInt(e)}
+                    >
+                      X
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+            <div>
+              {isAdding ? <Selecter className="add-topic-selector" /> : ""}
+              <Button
+                className="add-item"
+                name={interests}
+                onClick={(e) => setIsAdding(!isAdding)}
+              >
+                {isAdding ? <CheckCircleRoundedIcon /> : <AddCircleIcon />}
+              </Button>
+            </div>
           </div>
         </>
       );
@@ -503,30 +500,31 @@ const App = () => {
               </div>
             );
           })}
-          <div className='addskill'>
-          {/* {isAdding ? <input type="text" ref={skill_temp} placeholder="Add Skill"/> : ""} */}
-          {isAdding ? 
-          <TextField
-              style={{ width: "93%" }}
-              id="outlined-search"
-              label="Add Skill"
-              type="text"
-              // variant="outlined"
-              inputRef={skill_temp}
-            ></TextField>: ""}
-          
+          <div className="addskill">
+            {/* {isAdding ? <input type="text" ref={skill_temp} placeholder="Add Skill"/> : ""} */}
+            {isAdding ? (
+              <TextField
+                style={{ width: "93%" }}
+                id="outlined-search"
+                label="Add Skill"
+                type="text"
+                // variant="outlined"
+                inputRef={skill_temp}
+              ></TextField>
+            ) : (
+              ""
+            )}
           </div>
-          
+
           <Button
             className="add-item"
             name={accomp}
             onClick={(e) => {
               if (isAdding) addSkill();
               setIsAdding(!isAdding);
-      
             }}
           >
-            {isAdding ? <CheckCircleRoundedIcon/> : <AddCircleIcon/>}
+            {isAdding ? <CheckCircleRoundedIcon /> : <AddCircleIcon />}
           </Button>
         </div>
       );
@@ -580,10 +578,8 @@ const App = () => {
   //ADD SKILL
 
   const addSkill = () => {
-    
     const temp = [...accomp, skill_temp.current.value];
-    
-    
+
     setPerson({
       ...person,
       accomp: temp,
@@ -615,7 +611,7 @@ const App = () => {
   // MAIN JSX
   return (
     <div id="container">
-      <div style={{ maxHeight: "300px" }}>
+      <div style={{ maxHeight: "225px" }}>
         <img src={logo} alt="logo" className="logo" />
         {/* <input type="text" className="search" placeholder="Search"></input> */}
         {/*Can set image of profile"*/}
@@ -641,7 +637,7 @@ const App = () => {
           </button>
         </nav>
       </div>
-    
+
       {page === "PROFILE" ? (
         <ProfilePrinter />
       ) : page === "PROJECT" ? (
@@ -656,7 +652,11 @@ const App = () => {
           setPage={setPage}
         />
       )}
-      <div className="btn-signout"><Button onClick={Signout}><b>Click here to Sign Out</b></Button></div>
+      <div className="btn-signout">
+        <Button onClick={Signout}>
+          <b>Click here to Sign Out</b>
+        </Button>
+      </div>
     </div>
   );
 };

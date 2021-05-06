@@ -40,7 +40,12 @@ const Project = ({ Project }) => {
   const classes = useStyles();
   return (
     <>
-      <ToastContainer />
+      <ToastContainer
+        autoClose={2000}
+        position="top-center"
+        className="toast-container"
+        // toastClassName="dark-toast"
+      />
       <div className="ProjectBox ForShadow">
         <div style={{ display: "inline-flex" }} className="ProjectHeader">
           <div>

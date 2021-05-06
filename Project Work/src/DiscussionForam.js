@@ -8,10 +8,10 @@ import SearchIcon from "@material-ui/icons/Search";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import {useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 require("dotenv").config();
 
 const DiscussionForam = ({ ques }) => {
@@ -61,7 +61,7 @@ const DiscussionForam = ({ ques }) => {
       .post(`${URL}/AddQuestion`, nwQues)
       .then((res) => {
         console.log("answer added successful");
-        toast.success("Que added");
+        toast.success("Question sucessfully added");
         // alert("successfully added Question");
       })
       .catch((err) => {
@@ -139,7 +139,7 @@ const DiscussionForam = ({ ques }) => {
     return temp;
   };
 
-  const Signout = () =>{
+  const Signout = () => {
     history.push("/login");
   };
   const addAnswer = (Ans) => {
@@ -214,7 +214,7 @@ const DiscussionForam = ({ ques }) => {
         <div style={{ display: "inline-block" }}>
           <div className="profile-icon">
             <div style={{ display: "inline-flex", float: "right" }}></div>
-            <img src={pic} style={{height:'50px',width:'50px'}}/>
+            <img src={pic} style={{ height: "50px", width: "50px" }} />
             <p>&nbsp;&nbsp;&nbsp;{Cookie.name}</p>
             <Button onClick={Signout}>Sign Out</Button>
           </div>
