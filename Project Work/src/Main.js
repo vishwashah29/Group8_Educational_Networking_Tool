@@ -16,15 +16,17 @@ import { Link } from "react-router-dom";
 import EditDetailsForm from "./EditDetailsForm";
 import Button from "@material-ui/core/Button";
 import { FaTimes } from "react-icons/fa";
-import { Cookies } from "react-cookie";
+import { Cookies,useCookies } from "react-cookie";
 import TextField from "@material-ui/core/TextField";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
 
+import {useHistory } from "react-router-dom";
 
 const App = () => {
   const cookies = new Cookies();
   const Cookie = cookies.get("userCookie");
+  const history = useHistory();
   //Default Person
   const defalut_Person = {
     fullName: Cookie.name,
@@ -62,7 +64,8 @@ const App = () => {
   const [question, setQuestion] = useState("");
   const [editDetails, setEditDetails] = useState(false);
   const [skill, setSkill] = useState("");
-
+  const [cookie, setCookie] = useCookies(["userCookie"]);
+  
   // REMOVE SKILL
   const removeSkill = (e) => {
     const tempSkill = person.accomp.filter((i) => i !== e.target.value);
@@ -70,6 +73,10 @@ const App = () => {
       ...person,
       accomp: tempSkill,
     });
+  };
+
+  const Signout = () =>{
+    history.push("/login");
   };
 
   //REMOVE INTERESTS
@@ -304,7 +311,7 @@ const App = () => {
           </button>
         </nav>
       </div>
-
+    
       {page === "PROFILE" ? (
         <ProfilePrinter />
       ) : page === "PROJECT" ? (
@@ -319,6 +326,7 @@ const App = () => {
           setPage={setPage}
         />
       )}
+      <div className="btn-signout"><Button onClick={Signout}><b>Click here to Sign Out</b></Button></div>
     </div>
   );
 };
