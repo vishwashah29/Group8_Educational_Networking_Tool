@@ -23,12 +23,13 @@ const ContactUs=()=>{
             onMouseEnter={()=>setShow(true)} 
             onMouseLeave={()=>setShow(false)} >            
             <div>
-                    <img src={images(`./${P.person}.png`).default}/>
+                    <img className={ show?'contact-image-not-display':'contact-image-display' } src={images(`./${P.person}.png`).default}/>
             </div>
-                    <div className={show?'contact-vars-display':'contact-not-display'}>{P.email}</div>
-                    <div className={show?'contact-vars-display':'contact-not-display'}>{P.phone}</div>
+                    
                     <div>{P.person}</div>
                     <div>{P.title}</div>
+                    <div className={show?'contact-vars-display':'contact-not-display'}>{P.email}</div>
+                    <div className={show?'contact-vars-display':'contact-not-display'}>{P.phone}</div>
             </div>
         )
     }

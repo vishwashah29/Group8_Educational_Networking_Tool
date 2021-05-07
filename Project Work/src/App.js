@@ -5,7 +5,7 @@ import FirstPage from './firstPage'
 import Home from './menuPages/Home';
 import ContactUs from './menuPages/ContactUs';
 import Blog from './menuPages/Blog';
-{/*this is main App.js this file will be rendered in index.js*/}
+{/*this is main App.js this file will be rendered in index.js github ne marvu padse*/}
 function App() {
   return (
     <>

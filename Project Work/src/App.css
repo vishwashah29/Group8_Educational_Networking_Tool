@@ -10,6 +10,13 @@
   width: 80%;
   float: left;
 }
+
+.btn-signout {
+  text-align: center;
+  margin: 30px;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
 .skills {
   background-color: rgb(106, 212, 241);
   border: 1px solid black;
@@ -124,7 +131,7 @@
   border-color: white white grey white;
   height: 90px;
 }
-.btn-wrapper Button:afterClick {
+.btn-wrapper Button:afterclick {
   border-bottom: 2px solid black;
 }
 
@@ -203,4 +210,5 @@
   border-color: white;
   border-radius: 20px;
   background-color: rgb(163, 219, 235);
+  /*notification vali*/
 }
