@@ -15,23 +15,22 @@ const Logmain = ({ flg }) => {
         className="containerbg inline-flex-parent"
         style={{
           backgroundImage: `url(${background})`,
+          height: "100%",
           // alignItems :'center',
+          justifyContent: "center",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <div
-          className=" container-bg inline-flex-parent LoginOutBox"
-          style={{ 
-          background: "rgb(215,228,228)",
-          background:
-            "linear-gradient(90deg, rgba(215,228,228,1) 0%, rgba(206,211,212,1) 36%, rgba(0,212,255,1) 100%)",
-          borderRadius:"50px" }}
+          className="inline-flex-parent LoginOutBox"
+          style={{ borderRadius: "50px" }}
         >
-          <div class = "container-fluid">
+          <div >
             {flg === "true" && <Log />}
             {flg === "false" && <Regi />}
           </div>
           {/* <hr></hr> */}
-          <div className= "container-fluid" style={{ paddingTop: "30px" }}>
+          <div style={{ paddingTop: "30px" }}>
             <div className="LoginLogo">
               <img
                 className="ImgLogin"
@@ -39,7 +38,8 @@ const Logmain = ({ flg }) => {
                 alt="Logo of website"
               />
             </div>
-            <div className = "container-fluid">
+
+            <div>
               <h1 className="textcls">Welcome to </h1>
               <h1 className="textcls">the community</h1>
             </div>

@@ -11,13 +11,13 @@ const Home=()=>{
 
     return(
         <>
-            <div className='upper-container container-fluid'>
+            <div className='upper-container'>
                 <NavBar/>
                 <div className='logo'>
                     <img src={logo} alt='Logo of website'/>
-                <h4>
+                <div className='title'>
                 MEETUP PLATFORM FOR <br/>LEARNERS AND EXPERTS
-                </h4>
+                </div>
                 </div>
             </div>
 

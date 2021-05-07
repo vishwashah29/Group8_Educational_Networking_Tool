@@ -112,37 +112,41 @@ const Regi = ({ onadd }) => {
 
   return (
     <div className="container">
-
-
-      <div className="row">
-        <h2 style = {{textAlign:"center"}}>Create an Account</h2>
-        <div
-          className="col"
-          style={{
-            backgroundImage: `url(${Prof})`,
-          }}
-          onMouseOver={clkprof}
-        >
-          <button type= "button" className = "btn btn-block btn-light">Professor</button>
+      <h1>Create an Account</h1>
+      <div className="inline-flex-par1">
+        <div>
+          <div
+            className="imglogo"
+            style={{
+              backgroundImage: `url(${Prof})`,
+              height: "90px",
+              width: "50px",
+              // alignItems :'center',
+              justifyContent: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+            onMouseOver={clkprof}
+          ></div>
+          <h3>professor</h3>
         </div>
-      
-      {/* <hr></hr> */}
-
-      <div
-        className="col"
-        style={{
-          backgroundImage: `url(${Stu})`,
-
-          // alignItems :'center',
-          justifyContent: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-        onMouseOver={clkstu}
-      >
-      <button type= "button" className = "btn btn-block btn-light">Student</button>
+        {/* <hr></hr> */}
+        <div>
+          <div
+            className="imglogo"
+            style={{
+              backgroundImage: `url(${Stu})`,
+              height: "90px",
+              width: "50px",
+              // alignItems :'center',
+              justifyContent: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+            onMouseOver={clkstu}
+          ></div>
+          <h3>Student</h3>
+        </div>
       </div>
-      </div>
-      <form  onSubmit={onsub} className="add-form">
+      <form onSubmit={onsub} className="add-form">
         <div className="form-control">
           <div className="inline-flex-par">
             <div>
@@ -245,7 +249,11 @@ const Regi = ({ onadd }) => {
           />
         </div>
         <div>
-          <input type="checkbox" required />
+          <input
+            type="checkbox"
+            style={{ height: "20px", width: "20px" }}
+            required
+          />
           <label style={{ fontSize: "15px" }}>
             {" "}
             By registering, you confirm to have read and agree to our
@@ -253,11 +261,7 @@ const Regi = ({ onadd }) => {
           </label>
         </div>
 
-        <input
-          type="submit"
-          value="Register"
-          className="btn btn-block btn-light"
-        />
+        <input type="submit" value="Register" className="btn btn-block" />
       </form>
     </div>
   );

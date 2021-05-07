@@ -1,26 +1,12 @@
-import { Navbar, Nav, Button, FormControl, Form ,NavLink} from 'react-bootstrap';
-import {LinkContainer} from 'react-router-bootstrap'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-
-
-import { Link } from 'react-router-dom';
-
-const App = () => {
-    return (
-
-        <div classname= "container" style = {{'float': 'right'}}>
-            <LinkContainer to="/signup">
-                <Button>Signup</Button>
-            </LinkContainer>
-            <LinkContainer to="/login">
-                <Button>Login</Button>
-            </LinkContainer>
-            <LinkContainer to="/contactus">
-                <Button>Contact Us</Button>
-            </LinkContainer>
-            <LinkContainer to="/home">
-                <Button>Home</Button>
-            </LinkContainer>
+import {Link} from 'react-router-dom';
+const App=()=>{
+    return(
+        
+        <div className='link-container'>            
+            <Link className='link-item' to='/signup'>SIGN UP</Link>
+            <Link className='link-item' to='/login'>LOGIN</Link>
+            <Link className='link-item' to='/contactus'>CONTACT US</Link>
+            <Link className='link-item' to='/home'>HOME</Link>
         </div>
     )
 }

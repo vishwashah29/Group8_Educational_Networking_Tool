@@ -19,17 +19,24 @@
     font-size: large;
 }
 
-.contact{
-    position: relative;
-}
+
 .contact-vars-display{
     position: relative;
-    top: -100px;
+    font-size: 12px;
+    top: -160px;
     right: 0px;
     left: 0px;
     bottom: 0px;
 }
 
 .contact-not-display{
-    
+    display:none;
+}
+
+.contact-image-not-display{
+    opacity: 0.25;
+}
+
+.contact-image-display{
+    opacity: 1;
 }

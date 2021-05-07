@@ -82,18 +82,18 @@ const Login = ({ onlog }) => {
     // history.push("/main");
   };
   return (
-    <div className="container-fluid">
+    <div className="container">
       <form onSubmit={onsub} className="add-form">
-        <div className="Login-title container-fluid">
+        <div className="Login-title">
           <h2 style={{textAlign: "center" }}>Login</h2>
           
-          <div className = "container-fluid">
+          <div style={{padding:'15px',marginLeft:'25%'}}>
           <GLogin />
           </div>
         </div>
-        <br/>
-        <h5  style = {{textAlign:"center"}}>-OR-</h5>
-        <div className="form-control container-fluid" >
+
+        <h4 style={{ textAlign: "center" }}>-OR-</h4>
+        <div className="form-control">
           {/* <label >Email-id</label>  */}
           {/* <input
             className="text-box"
@@ -112,7 +112,6 @@ const Login = ({ onlog }) => {
             variant="outlined"
             helperText={Val1 && 'Invalid Email'}
             onChange={(e) => setemail(e.target.value)}
-            
           />
         </div>
         <div className="form-control">
@@ -138,10 +137,10 @@ const Login = ({ onlog }) => {
           />
         </div>
 
-        <input type="submit" value="Login" className="btn btn-light btn-block" />
+        <input type="submit" value="Login" className="btn btn-block" />
       </form>
-      <h5 style={{textAlign:'center'}}>Don't have account yet?</h5>
-      <button  type="button" class="btn btn-block btn-light" data-testid="create-new-acc" onClick={() => history.push("/signup")} >
+      <h3 style={{textAlign:'center'}}>Don't have account yet?</h3>
+      <button data-testid="create-new-acc" onClick={() => history.push("/signup")} className="btn-ot">
         {" "}
         Create an account
       </button>
