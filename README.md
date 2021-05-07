@@ -8,9 +8,10 @@ The objective of our project is to provide a platform for students across the gl
 ### We have used Node.js and MongoDB for the backend part.
 Link to the frontend repository: https://github.com/vishwashah29/Group8_Educational_Networking_Tool
 Link to the backend repository:  https://github.com/VismayTandel/SE_Backend
+Link to the demo video of the webapp: https://www.youtube.com/watch?v=xIMUTXt8pTc
 
 
 # GitHub Folders:
 The main repository(https://github.com/vishwashah29/Group8_Educational_Networking_Tool) has two major folders: Assignment and Project Work. The assignment folder consists of the documents and diagrams made during the lab timings.//
 Project Work respository which has the impllementation of our fronted part.//
-All the main documents (System Requirements Document, Presentation, Contribution document, Minutes of meeting document and testing documents) have been uploaded on the main page.
+All the main documents (System Requirements Document, Presentation, Contribution document, Minutes of meeting document and testing documents) have been uploaded in the Final Documments folder on the main page.
